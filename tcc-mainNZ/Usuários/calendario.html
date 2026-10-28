@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bellievie · Calendário</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="calendario.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand">
+                <strong>BELLIEVIE</strong>
+                <span>REPRESENTANTE</span>
+            </div>
+            <nav class="menu" id="menu">
+                <a href="dashboarda.html" class="">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M2.5 2.5h11v11h-11zM2.5 8h11M8 2.5v11"/></svg> Dashboard
+                </a>
+                <a href="eventos.html" class="">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M2.5 2.5h11v11h-11zM2.5 6h11M2.5 9.5h11"/></svg> Eventos
+                </a>
+                <a href="relatorio.html" class="">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M2.5 3.5h11v9h-11zM8 3.5v9"/></svg> Relatórios
+                </a>
+                <a href="calendario.html" class="active gap" aria-current="page">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M3 3h10v10H3z"/></svg> Calendário
+                </a>
+                <a href="viagem.html" class="">
+                    <svg width="20" height="20" viewBox="0 0 24 24" class="fill"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg> Viagens
+                </a>
+                <a href="visitas.html" class="" aria-current="page">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M3 3h10v10H3z"/></svg> visitas
+                </a>
+                <hr>
+            </nav>
+            <div class="profile">
+                <div class="photo">
+                    <svg width="36" height="36" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#8d9a94"/><circle cx="16" cy="12.5" r="5.5" fill="#1b2b24"/><path d="M5.5 27c1.5-6 5.5-8 10.5-8s9 2 10.5 8c-3 3-6.5 4.5-10.5 4.5S8.5 30 5.5 27z" fill="#1b2b24"/></svg>
+                </div>
+                <div>
+                    <b>Representante</b>
+                    <small>Usuário corporativo</small>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTEÚDO -->
+        <main class="main">
+
+            <div class="title">
+                <h1>Calendário</h1>
+            </div>
+            <div class="content">
+                <div class="head">
+                    <div class="nav"><button id="prev" aria-label="Mês anterior">‹</button>
+                        <h2 id="titulo"></h2><button id="next" aria-label="Próximo mês">›</button></div>
+                    <button class="view" type="button">Mês</button>
+                </div>
+                <div class="cal" id="cal"></div>
+            </div>
+        </main>
+    </div>
+    <script>
+        const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+        const DOW = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+        // Eventos: chave 'ano-mes(0 a 11)-dia' -> [texto, cor]
+        const EVENTOS = {
+            '2026-9-5': [
+                ['Reunião sala 07 · 15:00', '']
+            ],
+            '2026-9-15': [
+                ['Beauty Fair Tech', '']
+            ],
+            '2026-9-16': [
+                ['Beauty Fair Tech', '']
+            ],
+            '2026-9-22': [
+                ['Reunião sala 09 · 14:00', 'laranja']
+            ]
+        };
+        let ref = new Date(2026, 9, 1);
+
+        function render() {
+            const y = ref.getFullYear(),
+                m = ref.getMonth();
+            document.getElementById('titulo').textContent = MESES[m] + ' ' + y;
+            const primeiro = new Date(y, m, 1).getDay();
+            const semanas = Math.ceil((primeiro + new Date(y, m + 1, 0).getDate()) / 7);
+            const cal = document.getElementById('cal');
+            cal.style.gridTemplateRows = '76px repeat(' + semanas + ', 1fr)';
+            const inicio = new Date(y, m, 1 - primeiro);
+            const hoje = new Date();
+            let h = DOW.map(d => '<div class="dow">' + d + '</div>').join('');
+            for (let i = 0; i < semanas * 7; i++) {
+                const d = new Date(inicio);
+                d.setDate(inicio.getDate() + i);
+                const fora = d.getMonth() !== m;
+                const evs = fora ? [] : (EVENTOS[y + '-' + m + '-' + d.getDate()] || []);
+                h += '<div class="cell' + (fora ? ' out' : '') + (d.toDateString() === hoje.toDateString() ? ' hoje' : '') + '"><span>' + d.getDate() + '</span>' +
+                    evs.map(e => '<div class="ev ' + e[1] + '">' + e[0] + '</div>').join('') + '</div>';
+            }
+            cal.innerHTML = h;
+        }
+        document.getElementById('prev').onclick = () => {
+            ref.setMonth(ref.getMonth() - 1);
+            render();
+        };
+        document.getElementById('next').onclick = () => {
+            ref.setMonth(ref.getMonth() + 1);
+            render();
+        };
+        render();
+    </script>
+</body>
+
+</html>

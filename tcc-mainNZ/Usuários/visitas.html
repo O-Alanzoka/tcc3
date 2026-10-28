@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bellievie | Minhas visitas</title>
+    <link rel="stylesheet" href="visitas.css" />
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Bellievie | Visitas</h1>
+            <p>Organize seus compromissos e acompanhe os registros.</p>
+        </div>
+        <div class="header-actions">
+            <a class="link-botao secundario" href="/Usuarios/dashboarda.html">Dashboard</a
+        >
+        <a class="link-botao secundario" href="/sair">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="panel" id="painelFormulario">
+            <h2 id="tituloFormulario">Registrar visita</h2>
+
+            <form id="formVisita">
+                <div class="form-grid">
+                    <div class="campo">
+                        <label for="titulo">Título da visita *</label>
+                        <input id="titulo" name="titulo" maxlength="150" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="empresa">Empresa ou instituição *</label>
+                        <input id="empresa" name="empresa" maxlength="150" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="data_visita">Data *</label>
+                        <input id="data_visita" name="data_visita" type="date" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="horario">Horário *</label>
+                        <input id="horario" name="horario" type="time" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="nome_contato">Nome do contato *</label>
+                        <input id="nome_contato" name="nome_contato" maxlength="150" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefone">Telefone do contato</label>
+                        <input id="telefone" name="telefone" maxlength="30" />
+                    </div>
+
+                    <div class="campo completo">
+                        <label for="endereco">Endereço da visita *</label>
+                        <input id="endereco" name="endereco" maxlength="250" required />
+                    </div>
+
+                    <div class="campo completo">
+                        <label for="finalidade">Finalidade da visita *</label>
+                        <input id="finalidade" name="finalidade" maxlength="500" required />
+                    </div>
+
+                    <div class="campo completo">
+                        <label for="observacoes">Observações</label>
+                        <textarea id="observacoes" name="observacoes" maxlength="2000"></textarea>
+                    </div>
+                </div>
+
+                <div class="acoes">
+                    <button class="primario" id="btnSalvar" type="submit">
+              Salvar visita
+            </button>
+                    <button class="secundario" id="btnLimpar" type="button">
+              Limpar formulário
+            </button>
+                    <button class="secundario" id="btnCancelarEdicao" type="button" hidden>
+              Cancelar edição
+            </button>
+                </div>
+                <div id="mensagem" role="status" aria-live="polite"></div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Visitas registradas</h2>
+
+            <div class="filtros">
+                <div class="campo">
+                    <label for="busca">Pesquisar</label>
+                    <input id="busca" placeholder="Título, empresa ou contato" />
+                </div>
+                <div class="campo">
+                    <label for="filtroData">Data</label>
+                    <input id="filtroData" type="date" />
+                </div>
+                <div class="campo">
+                    <label for="filtroStatus">Status</label>
+                    <select id="filtroStatus">
+              <option value="">Todos</option>
+              <option value="agendada">Agendada</option>
+              <option value="realizada">Realizada</option>
+              <option value="cancelada">Cancelada</option>
+            </select>
+                </div>
+                <button type="button" class="secundario" id="btnAtualizar">
+            Atualizar lista
+          </button>
+            </div>
+
+            <div class="tabela-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Visita</th>
+                            <th>Data e horário</th>
+                            <th>Contato</th>
+                            <th>Responsável</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaVisitas">
+                        <tr>
+                            <td colspan="6" class="vazio">Carregando visitas...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const form = document.getElementById("formVisita");
+        const lista = document.getElementById("listaVisitas");
+        const mensagem = document.getElementById("mensagem");
+        const btnSalvar = document.getElementById("btnSalvar");
+        const btnCancelarEdicao = document.getElementById("btnCancelarEdicao");
+
+        let visitas = [];
+        let idEmEdicao = null;
+
+        function mostrarMensagem(texto, tipo = "") {
+            mensagem.textContent = texto;
+            mensagem.className = tipo;
+        }
+
+        async function requisicao(url, opcoes = {}) {
+            const resposta = await fetch(url, {
+                credentials: "same-origin",
+                ...opcoes,
+                headers: {
+                    ...(opcoes.body ?
+                        {
+                            "Content-Type": "application/json",
+                        } :
+                        {}),
+                    ...(opcoes.headers || {}),
+                },
+            });
+
+            if (resposta.redirected || resposta.status === 401) {
+                window.location.href = "/login.html";
+                throw new Error("Sua sessão expirou. Entre novamente.");
+            }
+
+            const tipo = resposta.headers.get("content-type") || "";
+            const dados = tipo.includes("application/json") ?
+                await resposta.json() :
+                await resposta.text();
+
+            if (!resposta.ok) {
+                throw new Error(
+                    typeof dados === "object" && dados.erro ?
+                    dados.erro :
+                    "Não foi possível concluir a operação.",
+                );
+            }
+
+            return dados;
+        }
+
+        function criarCelula(texto) {
+            const td = document.createElement("td");
+            td.textContent = texto || "—";
+            return td;
+        }
+
+        function formatarData(data) {
+            if (!data) return "—";
+            const partes = data.split("-");
+            return partes.length === 3 ?
+                `${partes[2]}/${partes[1]}/${partes[0]}` :
+                data;
+        }
+
+        function renderizarVisitas() {
+            const termo = document
+                .getElementById("busca")
+                .value.trim()
+                .toLocaleLowerCase("pt-BR");
+            const dataFiltro = document.getElementById("filtroData").value;
+            const statusFiltro = document.getElementById("filtroStatus").value;
+
+            const filtradas = visitas.filter((visita) => {
+                const texto = [
+                        visita.titulo,
+                        visita.empresa,
+                        visita.nome_contato,
+                        visita.endereco,
+                        visita.finalidade,
+                        visita.responsavel,
+                    ]
+                    .join(" ")
+                    .toLocaleLowerCase("pt-BR");
+
+                return (
+                    (!termo || texto.includes(termo)) &&
+                    (!dataFiltro || visita.data_visita === dataFiltro) &&
+                    (!statusFiltro || visita.status === statusFiltro)
+                );
+            });
+
+            lista.replaceChildren();
+
+            if (!filtradas.length) {
+                const tr = document.createElement("tr");
+                const td = document.createElement("td");
+                td.colSpan = 6;
+                td.className = "vazio";
+                td.textContent = visitas.length ?
+                    "Nenhuma visita corresponde aos filtros." :
+                    "Nenhuma visita cadastrada.";
+                tr.appendChild(td);
+                lista.appendChild(tr);
+                return;
+            }
+
+            filtradas.forEach((visita) => {
+                const tr = document.createElement("tr");
+                tr.appendChild(criarCelula(`${visita.titulo}\n${visita.empresa}`));
+                tr.appendChild(
+                    criarCelula(
+                        `${formatarData(visita.data_visita)} às ${visita.horario}`,
+                    ),
+                );
+                tr.appendChild(
+                    criarCelula(`${visita.nome_contato}\n${visita.telefone || ""}`),
+                );
+                tr.appendChild(criarCelula(visita.responsavel));
+
+                const tdStatus = document.createElement("td");
+                const etiqueta = document.createElement("span");
+                etiqueta.className = `status ${visita.status}`;
+                etiqueta.textContent =
+                    visita.status === "agendada" ?
+                    "Agendada" :
+                    visita.status === "realizada" ?
+                    "Realizada" :
+                    "Cancelada";
+                tdStatus.appendChild(etiqueta);
+                tr.appendChild(tdStatus);
+
+                const tdAcoes = document.createElement("td");
+                const acoes = document.createElement("div");
+                acoes.className = "acoes-linha";
+
+                if (visita.status !== "cancelada") {
+                    const editar = document.createElement("button");
+                    editar.type = "button";
+                    editar.className = "secundario";
+                    editar.textContent = "Editar";
+                    editar.addEventListener("click", () => iniciarEdicao(visita));
+                    acoes.appendChild(editar);
+
+                    const cancelar = document.createElement("button");
+                    cancelar.type = "button";
+                    cancelar.className = "perigo";
+                    cancelar.textContent = "Cancelar";
+                    cancelar.addEventListener("click", () => cancelarVisita(visita));
+                    acoes.appendChild(cancelar);
+                }
+
+                tdAcoes.appendChild(acoes);
+                tr.appendChild(tdAcoes);
+                lista.appendChild(tr);
+            });
+        }
+
+        async function carregarVisitas() {
+            lista.innerHTML =
+                '<tr><td colspan="6" class="vazio">Carregando visitas...</td></tr>';
+
+            try {
+                visitas = await requisicao("/api/visitas");
+                renderizarVisitas();
+            } catch (erro) {
+                lista.replaceChildren();
+                const tr = document.createElement("tr");
+                const td = document.createElement("td");
+                td.colSpan = 6;
+                td.className = "vazio";
+                td.textContent = erro.message;
+                tr.appendChild(td);
+                lista.appendChild(tr);
+            }
+        }
+
+        function obterDadosFormulario() {
+            const dados = Object.fromEntries(new FormData(form).entries());
+            return dados;
+        }
+
+        function iniciarEdicao(visita) {
+            idEmEdicao = visita.id;
+
+            for (const campo of[
+                    "titulo",
+                    "data_visita",
+                    "horario",
+                    "endereco",
+                    "nome_contato",
+                    "empresa",
+                    "telefone",
+                    "finalidade",
+                    "observacoes",
+                ]) {
+                form.elements[campo].value = visita[campo] || "";
+            }
+
+            document.getElementById("tituloFormulario").textContent =
+                "Editar visita";
+            btnSalvar.textContent = "Salvar alterações";
+            btnCancelarEdicao.hidden = false;
+            mostrarMensagem("Editando visita selecionada.");
+            document.getElementById("painelFormulario").scrollIntoView({
+                behavior: "smooth",
+            });
+        }
+
+        function limparFormulario() {
+            form.reset();
+            idEmEdicao = null;
+            document.getElementById("tituloFormulario").textContent =
+                "Registrar visita";
+            btnSalvar.textContent = "Salvar visita";
+            btnCancelarEdicao.hidden = true;
+            mostrarMensagem("");
+        }
+
+        async function cancelarVisita(visita) {
+            const confirmar = window.confirm(
+                `Deseja cancelar a visita "${visita.titulo}"?`,
+            );
+            if (!confirmar) return;
+
+            try {
+                await requisicao(`/api/visitas/${visita.id}/cancelar`, {
+                    method: "PATCH",
+                });
+                mostrarMensagem("Visita cancelada com sucesso.", "sucesso");
+                await carregarVisitas();
+            } catch (erro) {
+                mostrarMensagem(erro.message, "erro");
+            }
+        }
+
+        form.addEventListener("submit", async(evento) => {
+            evento.preventDefault();
+            btnSalvar.disabled = true;
+            mostrarMensagem("");
+
+            try {
+                const dados = obterDadosFormulario();
+                const editando = idEmEdicao !== null;
+
+                await requisicao(
+                    editando ? `/api/visitas/${idEmEdicao}` : "/api/visitas", {
+                        method: editando ? "PUT" : "POST",
+                        body: JSON.stringify(dados),
+                    },
+                );
+
+                limparFormulario();
+                mostrarMensagem(
+                    editando ?
+                    "Visita atualizada com sucesso." :
+                    "Visita cadastrada com sucesso.",
+                    "sucesso",
+                );
+                await carregarVisitas();
+            } catch (erro) {
+                mostrarMensagem(erro.message, "erro");
+            } finally {
+                btnSalvar.disabled = false;
+            }
+        });
+
+        document
+            .getElementById("btnLimpar")
+            .addEventListener("click", limparFormulario);
+        btnCancelarEdicao.addEventListener("click", limparFormulario);
+        document
+            .getElementById("btnAtualizar")
+            .addEventListener("click", carregarVisitas);
+
+        document
+            .getElementById("busca")
+            .addEventListener("input", renderizarVisitas);
+        document
+            .getElementById("filtroData")
+            .addEventListener("change", renderizarVisitas);
+        document
+            .getElementById("filtroStatus")
+            .addEventListener("change", renderizarVisitas);
+
+        carregarVisitas();
+    </script>
+</body>
+
+</html>

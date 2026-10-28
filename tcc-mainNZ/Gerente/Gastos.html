@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Gastos - Bellievie Gerente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="gastos.css">
+</head>
+
+<body>
+    <aside class="side">
+        <div class="brand"><b>BELLIEVIE</b><small>GERENTE</small></div>
+        <nav>
+            <div class="item">
+                <span class="icon">▦</span> <a href="Dashboard.html">Dashboard</a>
+            </div>
+            <div class="item"><span class="icon">▤</span>
+                <a href="eventosG2.html">Eventos</a></div>
+            <div class="item"><span class="icon plane">✈</span>
+                <a href="viagensG.html">Viagens</a></div>
+            <div class="item active"><span class="icon">R$</span>
+                <a href="Gastos.html">Gastos</a></div>
+            <div class="item"><span class="icon">◉</span>
+                <a href="visitasG.html">Visitas</a></div>
+            <div class="item"><span class="icon">▥</span>
+                <a href="Relatorios.html">Relatórios</a></div>
+            <div class="item"><span class="icon">♟</span>
+                <a href="equipeG.html">Equipe</a></div>
+                    </nav>
+        <div class="user">
+            <div class="avatar">G</div>
+            <div><b>Gerente</b><span>Usuário corporativo</span></div>
+        </div>
+    </aside>
+
+    <main>
+        <h1>Gastos</h1>
+        <section class="card">
+            <h2>Lançamentos recentes</h2>
+            <div class="grid head">
+                <div class="c1">Data</div>
+                <div class="c2">Motivo</div>
+                <div class="c3">Funcionário</div>
+                <div class="c4">Valor gasto</div>
+                <div class="c6">Status do pagamento</div>
+            </div>
+            <div class="rows" id="rows"></div>
+        </section>
+    </main>
+
+    <script>
+        var data = [
+            ["10/10", "Alimentação", "Fulano 8", "R$ 85", "ok", "Aprovado"],
+            ["8/10", "Combustível", "Fulano 11", "R$ 180", "ok", "Aprovado"],
+            ["5/10", "Hospedagem", "Fulano 9", "R$ 450", "an", "Em análise"],
+            ["15/10", "Estacionamento", "Fulano 2", "R$ 35", "ok", "Aprovado"],
+            ["14/10", "Transporte", "Fulano 4", "R$ 110", "pe", "Pendente"],
+            ["10/10", "Alimentação", "Felipe Godoy", "R$ 85", "ok", "Aprovado"],
+            ["8/10", "Combustível", "Fulano 5", "R$ 180", "ok", "Aprovado"],
+            ["5/10", "Hospedagem", "Fulano 1", "R$ 450", "an", "Em análise"],
+            ["15/10", "Estacionamento", "Fulano 3", "R$ 35", "ok", "Aprovado"],
+            ["14/10", "Transporte", "Fulano 13", "R$ 110", "pe", "Pendente"],
+            ["10/10", "Alimentação", "Fulano 6", "R$ 85", "ok", "Aprovado"],
+            ["8/10", "Combustível", "Fulano 15", "R$ 180", "ok", "Aprovado"],
+            ["5/10", "Hospedagem", "Marco Antônio", "R$ 450", "an", "Em análise"],
+            ["15/10", "Estacionamento", "Fulano 3", "R$ 35", "ok", "Aprovado"]
+        ];
+        document.getElementById('rows').innerHTML = data.map(function(r) {
+            return '<div class="grid row"><div class="d">' + r[0] + '</div><div class="m">' + r[1] + '</div><div class="f">' + r[2] + '</div><div class="v">' + r[3] + '</div><div class="s"><span class="pill ' + r[4] + '">' + r[5] + '</span></div></div>';
+        }).join('');
+    </script>
+</body>
+
+</html>

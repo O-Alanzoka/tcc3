@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bellievie · Dashboard Representante</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="dashboarda.css" />
+</head>
+
+<body>
+    <div class="app">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand">
+                <strong>BELLIEVIE</strong>
+                <span>REPRESENTANTE</span>
+            </div>
+
+            <nav class="menu" id="menu">
+                <a href="#" class="active">
+                    <svg width="15" height="15" viewBox="0 0 16 16">
+              <path d="M2.5 2.5h11v11h-11zM2.5 8h11M8 2.5v11" />
+            </svg> Dashboard
+                </a>
+                <a href="eventos.html">
+                    <svg width="15" height="15" viewBox="0 0 16 16">
+              <path d="M2.5 2.5h11v11h-11zM2.5 6h11M2.5 9.5h11" />
+            </svg> Eventos
+                </a>
+                <a href="relatorio.html">
+                    <svg width="15" height="15" viewBox="0 0 16 16">
+              <path d="M2.5 3.5h11v9h-11zM8 3.5v9" />
+            </svg> Relatórios
+                </a>
+                <a href="calendario.html" class="gap">
+                    <svg width="15" height="15" viewBox="0 0 16 16">
+              <path d="M3 3h10v10H3z" />
+            </svg> Calendário
+                </a>
+                <a href="viagem.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" class="fill">
+              <path
+                d="M2
+          1 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"
+              />
+            </svg> Viagens
+                </a>
+
+                <a href="visitas.html" class="gap">
+                    <svg width="15" height="15" viewBox="0 0 16 16">
+              <path d="M3 3h10v10H3z" />
+            </svg> visitas
+                </a>
+                <hr />
+            </nav>
+
+            <div class="profile">
+                <div class="photo">
+                    <svg width="36" height="36" viewBox="0 0 32 32">
+              <circle cx="16" cy="16" r="16" fill="#8d9a94" />
+              <circle cx="16" cy="12.5" r="5.5" fill="#1b2b24" />
+              <path
+                d="M5.5 27c1.5-6 5.5-8 10.5-8s9 2 10.5 8c-3 3-6.500 4.500-10.500 4.500S8.500 30 5.500 27z"
+                fill="#1b2b24"
+              />
+            </svg>
+                </div>
+                <div>
+                    <b>Representante</b>
+                    <small>Usuário corporativo</small>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTEÚDO -->
+        <main class="main">
+            <header class="topbar">
+                <h1 id="saudacao">Bom dia, Usuário</h1>
+                <div class="top-right">
+                    <div class="month" id="mes">Outubro 2026</div>
+                    <span class="today">Hoje •</span>
+                    <div class="avatar">U</div>
+                </div>
+            </header>
+
+            <section class="next">
+                <small>Próximo compromisso</small>
+                <h2>Evento Beauty Fair Tech 15/10</h2>
+            </section>
+
+            <section class="stats">
+                <div class="card stat">
+                    <span>Minhas visitas</span><strong>8</strong>
+                </div>
+                <div class="card stat">
+                    <span>Meus eventos</span><strong>3</strong>
+                </div>
+                <div class="card stat">
+                    <span>Solicitações</span><strong>1</strong>
+                </div>
+                <div class="card stat">
+                    <span>Gastos do mês</span><strong>R$ 1.280</strong
+            ><em>R$ 968,98 Disponível</em>
+          </div>
+        </section>
+
+        <section class="middle">
+          <div class="card week">
+            <h3>Minha semana</h3>
+            <div class="days" id="days">
+              <div class="day" data-d="1">
+                <label>SEG</label>
+                <div class="slot">Reunião sala 07, às 15:00</div>
+              </div>
+              <div class="day" data-d="2">
+                <label>TER</label>
+                <div class="slot">-</div>
+              </div>
+              <div class="day" data-d="3">
+                <label>QUA</label>
+                <div class="slot">-</div>
+              </div>
+              <div class="day" data-d="4">
+                <label>QUI</label>
+                <div class="slot">Evento da Beauty Fair</div>
+              </div>
+              <div class="day" data-d="5">
+                <label>SEX</label>
+                <div class="slot">Reunião sala 09, às 14:00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card notes">
+            <h3>Notificações</h3>
+            <ul>
+              <li>
+                <p>Viagem solicitada</p>
+                <small>há 10 min</small>
+              </li>
+              <li>
+                <p>Evento Beauty Fair Tech 15/10</p>
+                <small>há 1 h</small>
+              </li>
+              <li>
+                <p>Gerente solicitou sua presença no evento FCE Cosmetique</p>
+                <small>há 3 h</small>
+              </li>
+              <li>
+                <p>Novo comentário do gerente</p>
+                <small>ontem</small>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script>
+      // Saudação e mês atuais
+      const agora = new Date();
+      const h = agora.getHours();
+      const saudacao = h < 12 ? "Bom dia" : h < 18 ? "Boa tarde" : "Boa noite";
+      document.getElementById("saudacao").textContent = saudacao + ", Usuário";
+
+      const meses = [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro",
+      ];
+      document.getElementById("mes").textContent =
+        meses[agora.getMonth()] + " " + agora.getFullYear();
+
+      // Destaca o dia de hoje na semana (seg a sex)
+      const hoje = agora.getDay();
+      document.querySelectorAll(".day").forEach((d) => {
+        d.classList.toggle("today", Number(d.dataset.d) === hoje);
+      });
+
+      // Menu lateral: mantém os links funcionais
+      document.querySelectorAll("#menu a").forEach((a) => {
+        if (a.getAttribute("href") === "#") {
+          a.addEventListener("click", (e) => {
+            e.preventDefault();
+          });
+        }
+      });
+
+      // Acesso rápido
+      const toast = document.getElementById("toast");
+      let t;
+      document.querySelectorAll(".buttons button").forEach((b) => {
+        b.addEventListener("click", () => {
+          toast.textContent = b.dataset.msg + " em breve";
+          toast.classList.add("show");
+          clearTimeout(t);
+          t = setTimeout(() => toast.classList.remove("show"), 2000);
+        });
+      });
+    </script>
+  </body>
+</html>

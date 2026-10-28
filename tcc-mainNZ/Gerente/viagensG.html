@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Bellievie - Viagens</title>
+
+    <link rel="stylesheet" href="viagensG.css" />
+</head>
+
+<body>
+    <div class="app">
+        <!-- =========================
+         MENU LATERAL
+    ========================== -->
+
+        <aside class="sidebar">
+            <div class="brand">
+                <h1>BELLIEVIE</h1>
+                <span>GERENTE</span>
+            </div>
+
+            <nav class="menu">
+                <a href="Dashboard.html" class="menu-item">
+                    <span class="icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="eventosG2.html" class="menu-item">
+                    <span class="icon">▤</span>
+                    <span>Eventos</span>
+                </a>
+
+                <a href="viagensG.html" class="menu-item active">
+                    <span class="icon plane">✈</span>
+                    <span>Viagens</span>
+                </a>
+
+                <a href="Gastos.html" class="menu-item">
+                    <span class="icon">R$</span>
+                    <span>Gastos</span>
+                </a>
+
+                <a href="visitasG.html" class="menu-item">
+                    <span class="icon">◉</span>
+                    <span>Visitas</span>
+                </a>
+
+                <a href="Relatorios.html" class="menu-item">
+                    <span class="icon">▥</span>
+                    <span>Relatórios</span>
+                </a>
+
+                <a href="equipeG.html" class="menu-item">
+                    <span class="icon">♟</span>
+                    <span>Equipe</span>
+                </a>
+            </nav>
+
+            <div class="profile">
+                <div class="profile-avatar">G</div>
+
+                <div>
+                    <strong>Gerente</strong>
+                    <small>Usuário corporativo</small>
+                </div>
+            </div>
+        </aside>
+
+        <!-- =========================
+         CONTEÚDO PRINCIPAL
+    ========================== -->
+
+        <main class="content">
+            <!-- CABEÇALHO -->
+
+            <header class="topbar">
+                <div class="page-title">
+                    <div class="title-line">
+                        <span class="plane-title">✈</span>
+
+                        <h2>Viagens</h2>
+                    </div>
+
+                    <p>Solicitações e status de viagens</p>
+                </div>
+
+                <div class="top-actions">
+                    <div class="month">Outubro 2026</div>
+
+                    <span class="today"> Hoje⌄ </span>
+
+                    <div class="user-circle">G</div>
+                </div>
+            </header>
+
+            <!-- =========================
+             CARDS
+        ========================== -->
+
+            <section class="stats">
+                <div class="stat-card">
+                    <span> Solicitações pendentes </span>
+
+                    <strong> 9 </strong>
+
+                    <small> Aguardando sua aprovação </small>
+                </div>
+
+                <div class="stat-card">
+                    <span> Viagens em andamento </span>
+
+                    <strong> 10 </strong>
+
+                    <small> Em deslocamento ou no destino </small>
+                </div>
+
+                <div class="stat-card">
+                    <span> Viagens este mês </span>
+
+                    <strong> 12 </strong>
+
+                    <small> Total de viagens </small>
+                </div>
+
+                <div class="stat-card">
+                    <span> Viagens este mês </span>
+
+                    <strong> R$ 8,450 </strong>
+
+                    <small> Total estimado do mês </small>
+                </div>
+            </section>
+
+            <!-- =========================
+             VIAGENS EM ANDAMENTO
+        ========================== -->
+
+            <section class="panel">
+                <h3>Viagens em andamento</h3>
+
+                <div class="table running-table">
+                    <!-- CABEÇALHO -->
+
+                    <div class="table-header">
+                        <span></span>
+                        <span></span>
+
+                        <span>Origem</span>
+
+                        <span>Destino</span>
+
+                        <span>Motivo</span>
+
+                        <span>Período</span>
+
+                        <span>Transporte</span>
+
+                        <span>Status</span>
+                    </div>
+
+                    <!-- F1 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F1</div>
+
+                        <div class="person">
+                            <strong> Fulano 1 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>Curitiba</div>
+
+                        <div>Bahia</div>
+
+                        <div>Visita a fornecedor</div>
+
+                        <div>
+                            15/10<br /> 18/10
+                        </div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status green"> Em andamento </span>
+                        </div>
+                    </div>
+
+                    <!-- F2 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F2</div>
+
+                        <div class="person">
+                            <strong> Fulano 2 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>São Paulo</div>
+
+                        <div>Recife</div>
+
+                        <div>Beauty Fair</div>
+
+                        <div>
+                            13/10<br /> 20/10
+                        </div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status green"> Chegou ao destino </span>
+                        </div>
+                    </div>
+
+                    <!-- F3 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F3</div>
+
+                        <div class="person">
+                            <strong> Fulano 3 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>Curitiba</div>
+
+                        <div>Salvador</div>
+
+                        <div>Beauty Show</div>
+
+                        <div>
+                            15/10<br /> 17/10
+                        </div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status green"> Em andamento </span>
+                        </div>
+                    </div>
+
+                    <!-- F4 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F4</div>
+
+                        <div class="person">
+                            <strong> Fulano 4 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>Curitiba</div>
+
+                        <div>Rio de Janeiro</div>
+
+                        <div>Reunião comercial</div>
+
+                        <div>
+                            20/10<br /> 25/10
+                        </div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status green"> Em andamento </span>
+                        </div>
+                    </div>
+
+                    <!-- F5 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F5</div>
+
+                        <div class="person">
+                            <strong> Fulano 5 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>São Paulo</div>
+
+                        <div>Bahia</div>
+
+                        <div>FCE Cosmetique</div>
+
+                        <div>
+                            24/10<br /> 28/10
+                        </div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status green"> Chegou ao destino </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========================
+             VIAGENS SOLICITADAS
+        ========================== -->
+
+            <section class="panel requested">
+                <h3>Viagens solicitadas</h3>
+
+                <div class="table requested-table">
+                    <div class="table-header">
+                        <span></span>
+                        <span></span>
+
+                        <span>Origem</span>
+
+                        <span>Destino</span>
+
+                        <span>Motivo</span>
+
+                        <span>Período</span>
+
+                        <span>Valor estimado</span>
+
+                        <span>Transporte</span>
+
+                        <span>Status</span>
+
+                        <span></span>
+                    </div>
+
+                    <!-- F1 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F1</div>
+
+                        <div class="person">
+                            <strong> Fulano 1 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>Curitiba</div>
+
+                        <div>Bahia</div>
+
+                        <div>Visita a fornecedor</div>
+
+                        <div>
+                            15/10<br /> 18/10
+                        </div>
+
+                        <div>R$ 3.000</div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status yellow"> 1 pendência </span>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="accept">Aceitar</button>
+
+                            <button class="reject">Recusar</button>
+                        </div>
+                    </div>
+
+                    <!-- F2 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F2</div>
+
+                        <div class="person">
+                            <strong> Fulano 2 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>São Paulo</div>
+
+                        <div>Recife</div>
+
+                        <div>Beauty Fair</div>
+
+                        <div>
+                            13/10<br /> 20/10
+                        </div>
+
+                        <div>R$ 1.500</div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status yellow"> 2 pendências </span>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="accept">Aceitar</button>
+
+                            <button class="reject">Recusar</button>
+                        </div>
+                    </div>
+
+                    <!-- F3 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F3</div>
+
+                        <div class="person">
+                            <strong> Fulano 3 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>Curitiba</div>
+
+                        <div>Alagoas</div>
+
+                        <div>Beauty Show</div>
+
+                        <div>
+                            15/10<br /> 17/10
+                        </div>
+
+                        <div>R$ 2.100</div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status yellow"> 2 pendências </span>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="accept">Aceitar</button>
+
+                            <button class="reject">Recusar</button>
+                        </div>
+                    </div>
+
+                    <!-- F4 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F4</div>
+
+                        <div class="person">
+                            <strong> Fulano 4 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>Curitiba</div>
+
+                        <div>Rio de Janeiro</div>
+
+                        <div>Reunião comercial</div>
+
+                        <div>
+                            20/10<br /> 25/10
+                        </div>
+
+                        <div>R$ 1.700</div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status yellow"> 1 pendência </span>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="accept">Aceitar</button>
+
+                            <button class="reject">Recusar</button>
+                        </div>
+                    </div>
+
+                    <!-- F5 -->
+
+                    <div class="table-row">
+                        <div class="flight-code">F5</div>
+
+                        <div class="person">
+                            <strong> Fulano 5 </strong>
+
+                            <small> Representante </small>
+                        </div>
+
+                        <div>São Paulo</div>
+
+                        <div>Bahia</div>
+
+                        <div>FCE Cosmetique</div>
+
+                        <div>
+                            24/10<br /> 28/10
+                        </div>
+
+                        <div>R$ 1.300</div>
+
+                        <div>Aéreo</div>
+
+                        <div>
+                            <span class="status yellow"> 2 pendências </span>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="accept">Aceitar</button>
+
+                            <button class="reject">Recusar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos | Bellievie Gerente</title>
+    <link rel="stylesheet" href="eventosG2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <a class="brand" href="Dashboard.html" aria-label="Bellievie início">
+                <span class="brand-name">BELLIEVIE</span>
+                <span class="brand-role">GERENTE</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Menu principal">
+                <a class="nav-link" href="Dashboard.html">
+                    <span class="nav-icon" aria-hidden="true">▦</span><span>Dashboard</span>
+                </a>
+                <a class="nav-link active" href="eventosG.html" aria-current="page">
+                    <span class="nav-icon" aria-hidden="true">▤</span><span>Eventos</span>
+                </a>
+                <a class="nav-link" href="viagensG.html">
+                    <span class="nav-icon plane" aria-hidden="true">✈</span><span>Viagens</span>
+                </a>
+                <a class="nav-link" href="Gastos.html">
+                    <span class="nav-icon" aria-hidden="true">R$</span><span>Gastos</span>
+                </a>
+                <a class="nav-link" href="visitasG.html">
+                    <span class="nav-icon" aria-hidden="true">◉</span><span>Visitas</span>
+                </a>
+                <a class="nav-link" href="Relatorios.html">
+                    <span class="nav-icon" aria-hidden="true">▥</span><span>Relatórios</span>
+                </a>
+                <a class="nav-link" href="equipeG.html">
+                    <span class="nav-icon" aria-hidden="true">♟</span><span>Equipe</span>
+                </a>
+            </nav>
+
+                <div class="profile">
+                <div class="profile-avatar" aria-hidden="true">G</div>
+                <div class="profile-copy">
+                    <strong>Gerente</strong>
+                    <span>Usuário corporativo</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <div>
+                    <p class="eyebrow">GERENCIAMENTO</p>
+                    <h1>Eventos</h1>
+                    <p class="page-description">Consulte os eventos cadastrados e confira seus detalhes.</p>
+                </div>
+                <div class="event-count"><span class="count-dot"></span> <span>11 eventos cadastrados</span></div>
+            </header>
+
+            <section class="events-list" aria-label="Lista de eventos">
+                <details class="event-card" open>
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 1 — BEAUTY FAIR TECH</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Beauty Fair Tech</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 1</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">15/10/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">São Paulo</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Empresa Horizonte</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Feira de cosméticos com foco em novos fornecedores.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Levar catálogo 2026.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 8 — FCE COSMETIQUE</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">FCE Cosmetique</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 8</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">20/10/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">Rio de Janeiro</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Grupo Alfa</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Apresentação da linha de skincare para compradores.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Reunião às 14h.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 9 — BEAUTY SHOW</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Beauty Show</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 9</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">24/10/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">Curitiba</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Grupo Bella</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Apresentação de lançamentos e relacionamento com clientes.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Confirmar presença dos convidados.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 2 — WORKSHOP TÉCNICO</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Workshop Técnico</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 2</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">27/10/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">São Paulo</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Nova Essência</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Treinamento técnico sobre os produtos da linha profissional.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Preparar material de apoio.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 3 — ENCONTRO REGIONAL</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Encontro Regional</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 3</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">30/10/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">Florianópolis</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Conecta Beauty</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Encontro com representantes e parceiros comerciais.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Levar lista de contatos.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 4 — FÓRUM DE NEGÓCIOS</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Fórum de Negócios</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 4</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">04/11/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">Brasília</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Grupo Alfa</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Discussão de oportunidades e parcerias comerciais.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Confirmar agenda com a equipe.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 5 — CONGRESSO COMERCIAL</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Congresso Comercial</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 5</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">08/11/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">Belo Horizonte</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Empresa Horizonte</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Congresso de tendências e estratégias de vendas.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Separar os materiais promocionais.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 6 — RODADA DE NEGÓCIOS</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Rodada de Negócios</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 6</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">12/11/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">Porto Alegre</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Conecta Beauty</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Reuniões rápidas com potenciais parceiros e clientes.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Organizar os horários das reuniões.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 7 — LANÇAMENTO LINHA VERÃO</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Lançamento Linha Verão</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 7</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">16/11/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">Curitiba</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Nova Essência</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Apresentação da nova linha de produtos para a temporada.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Preparar amostras para os clientes.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 10 — EXPO ESTÉTICA</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Expo Estética</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 10</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">21/11/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">São Paulo</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Grupo Bella</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Exposição de produtos e demonstrações para profissionais.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Confirmar credenciais de entrada.</span></div>
+                    </div>
+                </details>
+
+                <details class="event-card">
+                    <summary class="event-summary">
+                        <span class="event-check" aria-hidden="true">✓</span>
+                        <span class="event-title">FULANO 11 — VISITA À FÁBRICA</span>
+                        <span class="expand-icon" aria-hidden="true">⌄</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="detail-item"><span class="detail-label">NOME DO EVENTO</span><span class="detail-value">Visita à Fábrica</span></div>
+                        <div class="detail-item"><span class="detail-label">FUNCIONÁRIO</span><span class="detail-value">Fulano 11</span></div>
+                        <div class="detail-item"><span class="detail-label">DATA</span><span class="detail-value">26/11/26</span></div>
+                        <div class="detail-item"><span class="detail-label">LOCAL</span><span class="detail-value">Campinas</span></div>
+                        <div class="detail-item"><span class="detail-label">EMPRESA</span><span class="detail-value">Empresa Horizonte</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">DESCRIÇÃO DO EVENTO</span><span class="detail-value">Visita técnica para conhecer o processo de fabricação.</span></div>
+                        <div class="detail-item detail-wide"><span class="detail-label">OBSERVAÇÕES</span><span class="detail-value">Levar documento de identificação.</span></div>
+                    </div>
+                </details>
+            </section>
+
+            <footer class="page-footer">Bellievie • Área do gerente</footer>
+        </main>
+    </div>
+</body>
+
+</html>

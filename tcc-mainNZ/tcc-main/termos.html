@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termos de Uso — Believe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="termos.css">
+</head>
+<body>
+
+  <div class="header-app">
+    <button class="btn-voltar" onclick="history.back()" aria-label="Voltar"> <link rel="stylesheet" href="site.html">⬅</button>
+    <h1>Believe</h1>
+    <span class="header-progress" id="headerProgress">0 de 20 lidos</span>
+  </div>
+
+  <div class="intro">
+    <p>Para continuar, abra e leia os 20 termos abaixo. Assim que todos forem lidos, você poderá marcar a concordância e seguir em frente.</p>
+  </div>
+
+  <div class="container-termos" id="listaTermos"></div>
+
+  <div class="concordancia">
+    <div class="concordancia-inner">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <h3 id="statusTexto">Abra os 20 termos para liberar a concordância. <strong id="statusContagem">(0/20)</strong></h3>
+      <label class="checkbox-container desabilitado" id="checkboxWrapper">
+        <input type="checkbox" id="concordo" disabled>
+        <span>Li e concordo com os Termos de Uso</span>
+      </label>
+      <a href="site.html" id="botaoContinuar" class="botao-continuar desabilitado" aria-disabled="true">Continuar</a>
+    </div>
+  </div>
+
+<script>
+(function(){
+
+  var termos = [
+    "O conteúdo do site é protegido por direitos autorais e não pode ser reproduzido, distribuído ou utilizado comercialmente sem autorização prévia.",
+    "O site Bellievie não se responsabiliza por danos causados por vírus ou outros elementos prejudiciais que possam ser transmitidos através do site.",
+    "O site Bellievie reserva-se o direito de modificar ou encerrar o site a qualquer momento, sem aviso prévio.",
+    "O site Bellievie não se responsabiliza por informações incorretas ou desatualizadas fornecidas pelos usuários.",
+    "O uso do site Bellievie é regido por estes termos de uso. Qualquer violação destes termos pode resultar em ações legais.",
+    "O site Bellievie não se responsabiliza por qualquer perda ou dano decorrente do uso do site, incluindo, mas não se limitando a, perda de dados ou lucros.",
+    "O site Bellievie não se responsabiliza por qualquer claim, demanda ou ação judicial que possa surgir em relação ao uso do site.",
+    "O site Bellievie não se responsabiliza por qualquer conteúdo publicado por terceiros no site, incluindo comentários, avaliações ou mensagens.",
+    "O site Bellievie não se responsabiliza por qualquer violação de direitos autorais ou propriedade intelectual que possa ocorrer em relação ao conteúdo publicado pelos usuários.",
+    "Reservamo-nos o direito de modificar estes Termos de Uso a qualquer momento. Alterações poderão ser comunicadas por meio do próprio site.",
+    "Caso o usuário viole estes termos, a Bellievie poderá restringir ou suspender seu acesso ao site, observadas as disposições legais aplicáveis.",
+    "O usuário é responsável por possuir os dispositivos, conexão com a internet e demais recursos necessários para acessar e utilizar o site.",
+    "A Bellievie busca manter as informações disponibilizadas no site atualizadas, porém algumas informações podem estar sujeitas a alterações ou indisponibilidade.",
+    "O usuário concorda em não utilizar o site para transmitir conteúdo ofensivo, ilegal, fraudulento, malicioso ou que viole direitos de terceiros.",
+    "A utilização de determinadas funcionalidades do site poderá estar sujeita a condições específicas, que serão apresentadas ao usuário quando necessário.",
+    "A indisponibilidade temporária do site decorrente de manutenção, atualizações ou fatores técnicos poderá ocorrer, sem que isso represente necessariamente uma falha permanente do serviço.",
+    "Caso alguma disposição destes Termos de Uso seja considerada inválida ou inexigível, as demais disposições permanecerão válidas na medida permitida pela legislação aplicável.",
+    "O site Bellievie não se responsabiliza por qualquer violação de direitos de terceiros que possa ocorrer em relação ao uso do site.",
+    "O usuário concorda em não utilizar o site para fins comerciais sem a devida autorização da Bellievie.",
+    "A Bellievie não se responsabiliza por qualquer perda ou dano decorrente do uso do site, incluindo, mas não se limitando a, perda de dados ou lucros."
+  ];
+
+  var TOTAL = termos.length;
+  var lidos = new Set();
+
+  // tenta recuperar progresso salvo (conveniência local, por navegador)
+  try{
+    var salvo = localStorage.getItem('believe-termos-lidos');
+    if(salvo){
+      JSON.parse(salvo).forEach(function(i){ lidos.add(i); });
+    }
+  }catch(e){}
+
+  function salvarProgresso(){
+    try{
+      localStorage.setItem('believe-termos-lidos', JSON.stringify(Array.from(lidos)));
+    }catch(e){}
+  }
+
+  var lista = document.getElementById('listaTermos');
+
+  termos.forEach(function(texto, i){
+    var item = document.createElement('div');
+    item.className = 'termo-item';
+    item.id = 'termo-' + i;
+
+    var numero = String(i + 1).padStart(2, '0');
+    var contentId = 'conteudo-' + i;
+
+    item.innerHTML =
+      '<button class="termo-titulo" aria-expanded="false" aria-controls="' + contentId + '">' +
+        '<span class="termo-check" aria-hidden="true"></span>' +
+        '<h3>TERMOS ' + numero + '</h3>' +
+        '<span class="seta" aria-hidden="true">⬇</span>' +
+      '</button>' +
+      '<div class="termo-conteudo" id="' + contentId + '">' +
+        '<p>' + texto + '</p>' +
+      '</div>';
+
+    lista.appendChild(item);
+
+    var botao = item.querySelector('.termo-titulo');
+    var conteudo = item.querySelector('.termo-conteudo');
+
+    if(lidos.has(i)){
+      item.classList.add('lido');
+    }
+
+    botao.addEventListener('click', function(){
+      var abrindo = !item.classList.contains('aberto');
+
+      if(abrindo){
+        item.classList.add('aberto');
+        conteudo.style.maxHeight = conteudo.scrollHeight + 'px';
+        botao.setAttribute('aria-expanded', 'true');
+
+        if(!lidos.has(i)){
+          lidos.add(i);
+          item.classList.add('lido');
+          salvarProgresso();
+          atualizarStatus();
+        }
+      }else{
+        item.classList.remove('aberto');
+        conteudo.style.maxHeight = 0;
+        botao.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  var headerProgress = document.getElementById('headerProgress');
+  var progressFill = document.getElementById('progressFill');
+  var statusTexto = document.getElementById('statusTexto');
+  var statusContagem = document.getElementById('statusContagem');
+  var checkboxWrapper = document.getElementById('checkboxWrapper');
+  var checkbox = document.getElementById('concordo');
+  var botaoContinuar = document.getElementById('botaoContinuar');
+
+  function atualizarStatus(){
+    var n = lidos.size;
+    var pct = Math.round((n / TOTAL) * 100);
+
+    headerProgress.textContent = n + ' de ' + TOTAL + ' lidos';
+    progressFill.style.width = pct + '%';
+    statusContagem.textContent = '(' + n + '/' + TOTAL + ')';
+
+    if(n >= TOTAL){
+      statusTexto.innerHTML = 'Você leu todos os termos. <strong>Pode marcar a concordância.</strong>';
+      checkbox.disabled = false;
+      checkboxWrapper.classList.remove('desabilitado');
+    }else{
+      statusTexto.innerHTML = 'Abra os ' + TOTAL + ' termos para liberar a concordância. <strong>(' + n + '/' + TOTAL + ')</strong>';
+      checkbox.disabled = true;
+      checkbox.checked = false;
+      checkboxWrapper.classList.add('desabilitado');
+      atualizarBotao();
+    }
+  }
+
+  function atualizarBotao(){
+    if(checkbox.checked && !checkbox.disabled){
+      botaoContinuar.classList.remove('desabilitado');
+      botaoContinuar.removeAttribute('aria-disabled');
+    }else{
+      botaoContinuar.classList.add('desabilitado');
+      botaoContinuar.setAttribute('aria-disabled', 'true');
+    }
+  }
+
+  checkbox.addEventListener('change', atualizarBotao);
+
+  atualizarStatus();
+  atualizarBotao();
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bellievie · Relatório</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="relatorio.css">
+
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand">
+                <strong>BELLIEVIE</strong>
+                <span>REPRESENTANTE</span>
+            </div>
+            <nav class="menu" id="menu">
+                <a href="dashboarda.html" class="">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M2.5 2.5h11v11h-11zM2.5 8h11M8 2.5v11"/></svg> Dashboard
+                </a>
+                <a href="eventos.html" class="">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M2.5 2.5h11v11h-11zM2.5 6h11M2.5 9.5h11"/></svg> Eventos
+                </a>
+                <a href="relatorio.html" class="active" aria-current="page">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M2.5 3.5h11v9h-11zM8 3.5v9"/></svg> Relatórios
+                </a>
+                <a href="calendario.html" class="gap">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M3 3h10v10H3z"/></svg> Calendário
+                </a>
+                <a href="viagem.html" class="">
+                    <svg width="20" height="20" viewBox="0 0 24 24" class="fill"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg> Viagens
+                </a>
+                <a href="visitas.html" class="">
+                    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M2.5 2.5h11v11h-11zM2.5 6h11M2.5 9.5h11"/></svg> visitas
+                </a>
+                <hr>
+            </nav>
+            <div class="profile">
+                <div class="photo">
+                    <svg width="36" height="36" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#8d9a94"/><circle cx="16" cy="12.5" r="5.5" fill="#1b2b24"/><path d="M5.5 27c1.5-6 5.5-8 10.5-8s9 2 10.5 8c-3 3-6.5 4.5-10.5 4.5S8.5 30 5.5 27z" fill="#1b2b24"/></svg>
+                </div>
+                <div>
+                    <b>Representante</b>
+                    <small>Usuário corporativo</small>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTEÚDO -->
+        <main class="main">
+
+            <div class="title">
+                <h1>Relatório</h1>
+            </div>
+            <form class="content form" id="f">
+                <h2 style="margin-bottom:2px">Informações do relatório</h2>
+                <div class="row a">
+                    <div class="f"><label for="nome">Nome do evento</label><input id="nome" required></div>
+                    <div class="f"><label for="data">Data</label><input id="data" type="date" required></div>
+                </div>
+                <div class="row a">
+                    <div class="f"><label for="rel">Evento relacionado</label><input id="rel"></div>
+                    <div class="f"><label for="func">Funcionário</label><input id="func"></div>
+                </div>
+                <div class="f grow"><label for="resumo">Resumo</label><textarea id="resumo"></textarea></div>
+                <div class="row b">
+                    <div class="f"><label for="gastos">Gastos do evento</label><input id="gastos" inputmode="decimal" placeholder="R$ 0,00"></div>
+                    <div class="f"><label for="contatos">Contatos realizados</label><input id="contatos" type="number" min="0"></div>
+                </div>
+                <div class="f grow" style="flex:1.3"><label for="acao">Ação / Resultado detalhado</label><textarea id="acao"></textarea></div>
+                <div class="row c">
+                    <div class="f"><span class="lb">Foto / Comprovante</span><label class="upload" for="foto" id="lf">Selecionar arquivo</label><input id="foto" type="file" accept="image/*,.pdf" hidden></div>
+                    <div class="f"><span class="lb">Anexos</span><label class="upload" for="anexos" id="la">Selecionar arquivos</label><input id="anexos" type="file" multiple hidden></div>
+                </div>
+                <div class="actions"><button class="btn" type="submit">Enviar relatório</button></div>
+            </form>
+        </main>
+    </div>
+    <script>
+        function rotulo(id, lab, padrao) {
+            document.getElementById(id).addEventListener('change', e => {
+                const n = e.target.files.length;
+                document.getElementById(lab).textContent = n ? (n > 1 ? n + ' arquivos' : e.target.files[0].name) : padrao;
+            });
+        }
+        rotulo('foto', 'lf', 'Selecionar arquivo');
+        rotulo('anexos', 'la', 'Selecionar arquivos');
+        document.getElementById('f').addEventListener('submit', e => {
+            e.preventDefault();
+            alert('Relatório enviado (protótipo)');
+        });
+    </script>
+</body>
+
+</html>

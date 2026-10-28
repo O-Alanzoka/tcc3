@@ -1,0 +1,463 @@
+-
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>Bellievie · Dashboard</title>
+
+    <link rel="stylesheet" href="Dashboard.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+        <a class="brand" href="#inicio" aria-label="Bellievie dashboard">
+            <span class="brand-name">BELLIEVIE</span>
+            <span class="brand-role">GERENTE</span>
+        </a>
+
+        <nav class="navigation" aria-label="Navegação principal">
+            <a class="nav-item active" href="#inicio">
+                <span class="nav-icon">▦</span> Dashboard
+            </a>
+ 
+            <a class="nav-item" href="eventosG2.html">
+                <span class="nav-icon">▤</span> Eventos
+            </a>
+ 
+            <a class="nav-item" href="viagensG.html">
+                <span class="nav-icon plane">✈</span> Viagens
+            </a>
+ 
+            <a class="nav-item" href="Gastos.html">
+                <span class="nav-icon">R$</span> Gastos
+            </a>
+ 
+            <a class="nav-item" href="visitasG.html">
+                <span class="nav-icon">◉</span> Visitas
+            </a>
+ 
+            <a class="nav-item" href="Relatorios.html">
+                <span class="nav-icon">▥</span> Relatórios
+            </a>
+ 
+ 
+            <a class="nav-item" href="equipeG.html">
+                <span class="nav-icon">♟</span> Equipe
+            </a>
+        </nav>
+
+        <!-- PERFIL DO GERENTE -->
+        <div class="sidebar-footer">
+            <div class="avatar profile-avatar">G</div>
+
+            <div class="profile-copy">
+                <span class="profile-name">Gerente</span>
+                <span class="profile-caption">Usuário corporativo</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main" id="inicio">
+        <!-- CABEÇALHO -->
+        <header class="topbar">
+            <div class="greeting">
+                <h1>Olá, Gerente</h1>
+                <p>Visão executiva da operação Bellievie</p>
+            </div>
+
+            <div class="top-actions">
+                <span class="month-chip">Outubro 2026</span>
+
+                <button class="today-button" type="button" onclick="
+              document
+                .getElementById('calendario')
+                .scrollIntoView({ behavior: 'smooth' })
+            ">
+            Hoje <span>⌄</span>
+          </button>
+
+                <button class="avatar top-avatar" type="button" aria-label="Perfil do gerente">
+            G
+          </button>
+            </div>
+        </header>
+
+        <!-- RESUMO DO MÊS -->
+        <section class="summary-grid" aria-label="Resumo do mês">
+            <article class="summary-card">
+                <span class="summary-label">Eventos</span>
+                <strong class="summary-value">38</strong>
+            </article>
+
+            <article class="summary-card">
+                <span class="summary-label">Visitas</span>
+                <strong class="summary-value">126</strong>
+            </article>
+
+            <article class="summary-card">
+                <span class="summary-label">Investimentos</span>
+                <strong class="summary-value">R$ 118 mil</strong>
+            </article>
+
+            <article class="summary-card">
+                <span class="summary-label">Viagens</span>
+                <strong class="summary-value">11</strong>
+            </article>
+        </section>
+
+        <!-- EQUIPE E NOTIFICAÇÕES -->
+        <section class="middle-grid">
+            <!-- EQUIPE -->
+            <article class="panel team-panel" id="equipe">
+                <div class="panel-heading">
+                    <h2>Equipe</h2>
+                </div>
+
+                <div class="team-list">
+                    <div class="team-row">
+                        <div class="initials">TF</div>
+
+                        <div class="team-person">
+                            <strong>Thomas Fraiz</strong>
+                            <span>Gerente geral</span>
+                        </div>
+
+                        <span class="pending">1 pendência</span>
+
+                        <button class="view-button" type="button" onclick="showNotice('Thomas Fraiz')">
+                Ver
+              </button>
+                    </div>
+
+                    <div class="team-row">
+                        <div class="initials">AP</div>
+
+                        <div class="team-person">
+                            <strong>Allany Pereira</strong>
+                            <span>Gerente de eventos</span>
+                        </div>
+
+                        <span class="pending">2 pendências</span>
+
+                        <button class="view-button" type="button" onclick="showNotice('Allany Pereira')">
+                Ver
+              </button>
+                    </div>
+
+                    <div class="team-row">
+                        <div class="initials">FG</div>
+
+                        <div class="team-person">
+                            <strong>Felipe Godoy</strong>
+                            <span>Representante</span>
+                        </div>
+
+                        <span class="pending">2 pendências</span>
+
+                        <button class="view-button" type="button" onclick="showNotice('Felipe Godoy')">
+                Ver
+              </button>
+                    </div>
+
+                    <div class="team-row">
+                        <div class="initials">MA</div>
+
+                        <div class="team-person">
+                            <strong>Marco Antônio</strong>
+                            <span>Representante</span>
+                        </div>
+
+                        <span class="pending">1 pendência</span>
+
+                        <button class="view-button" type="button" onclick="showNotice('Marco Antônio')">
+                Ver
+              </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- NOTIFICAÇÕES -->
+            <article class="panel notifications-panel">
+                <div class="panel-heading">
+                    <h2>Notificações</h2>
+                    <span class="notification-count">4</span>
+                </div>
+
+                <div class="notification-list">
+                    <div class="notification">
+                        <div class="notification-top">
+                            <strong>Novo evento aprovado</strong>
+                            <time>Hoje, 09:42</time>
+                        </div>
+
+                        <p>Evento Beauty Fair Tech foi aprovado.</p>
+                    </div>
+
+                    <div class="notification">
+                        <div class="notification-top">
+                            <strong>Solicitação de viagem</strong>
+                            <time>Hoje, 08:17</time>
+                        </div>
+
+                        <p>Viagem para João Pessoa (Paraíba) aguarda sua aprovação.</p>
+                    </div>
+
+                    <div class="notification">
+                        <div class="notification-top">
+                            <strong>Gasto pendente</strong>
+                            <time>Ontem, 16:38</time>
+                        </div>
+
+                        <p>Reembolso de R$ 450,00 aguardando análise.</p>
+                    </div>
+
+                    <div class="notification">
+                        <div class="notification-top">
+                            <strong>Visita confirmada</strong>
+                            <time>Ontem, 14:22</time>
+                        </div>
+
+                        <p>Visita à empresa Ella’s Cosméticos confirmada.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- CALENDÁRIO, EVENTOS E VIAGENS -->
+        <section class="bottom-grid">
+            <!-- CALENDÁRIO E PRÓXIMOS EVENTOS -->
+            <article class="panel calendar-events-panel">
+                <div class="calendar-area" id="calendario">
+                    <div class="calendar-month">
+                        <button type="button" aria-label="Mês anterior" onclick="changeMonth(-1)">
+                ‹
+              </button>
+
+                        <span id="monthLabel">Outubro 2026</span>
+
+                        <button type="button" aria-label="Próximo mês" onclick="changeMonth(1)">
+                ›
+              </button>
+                    </div>
+
+                    <div class="calendar-grid" id="calendarGrid" aria-label="Calendário mensal"></div>
+                </div>
+
+                <!-- PRÓXIMOS EVENTOS -->
+                <div class="upcoming-area" id="eventos">
+                    <h2>Próximos eventos</h2>
+
+                    <div class="event-row">
+                        <div class="event-date">
+                            <strong>05</strong>
+                        </div>
+
+                        <div class="event-copy">
+                            <strong>Beauty Show</strong>
+                            <span>10:00 - 12:00</span>
+                        </div>
+
+                        <span class="event-location"> João Pessoa (Paraíba) </span>
+                    </div>
+
+                    <div class="event-row">
+                        <div class="event-date">
+                            <strong>15</strong>
+                        </div>
+
+                        <div class="event-copy">
+                            <strong>Evento da Beauty Fair</strong>
+                            <span>14:00 - 16:00</span>
+                        </div>
+
+                        <span class="event-location"> Foz do Iguaçu (Paraná) </span>
+                    </div>
+
+                    <div class="event-row">
+                        <div class="event-date">
+                            <strong>18</strong>
+                        </div>
+
+                        <div class="event-copy">
+                            <strong>FCE Cosmétique</strong>
+                            <span>09:00 - 11:00</span>
+                        </div>
+
+                        <span class="event-location"> Fortaleza (Ceará) </span>
+                    </div>
+
+                    <div class="event-row">
+                        <div class="event-date">
+                            <strong>26</strong>
+                        </div>
+
+                        <div class="event-copy">
+                            <strong>Estética in Sul</strong>
+                            <span>15:00 - 18:00</span>
+                        </div>
+
+                        <span class="event-location">
+                Florianópolis (Santa Catarina)
+              </span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- VIAGENS EM ANDAMENTO -->
+            <article class="panel trips-panel" id="viagens">
+                <div class="panel-heading">
+                    <h2>Viagens em andamento</h2>
+
+                    <a href="viagensG.html" class="see-all"> Ver todas </a>
+                </div>
+
+                <div class="trip-list">
+                    <div class="trip-row">
+                        <div class="trip-copy">
+                            <strong>São Paulo - SP</strong>
+                            <span>12/08 - 14/08</span>
+                        </div>
+
+                        <span class="status-pill in-progress"> Em andamento </span>
+                    </div>
+
+                    <div class="trip-row">
+                        <div class="trip-copy">
+                            <strong>Porto Alegre - RS</strong>
+                            <span>20/08 - 22/08</span>
+                        </div>
+
+                        <span class="status-pill confirmed"> Confirmada </span>
+                    </div>
+
+                    <div class="trip-row">
+                        <div class="trip-copy">
+                            <strong>Rio de Janeiro - RJ</strong>
+                            <span>28/08 - 30/08</span>
+                        </div>
+
+                        <span class="status-pill pending-status"> Pendente </span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- AVISO DOS BOTÕES DA EQUIPE -->
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+
+    <!-- FUNCIONALIDADES DO CALENDÁRIO E DOS BOTÕES -->
+    <script>
+        const monthNames = [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro",
+        ];
+
+        let shownMonth = 9;
+        let shownYear = 2026;
+
+        function renderCalendar() {
+            const grid = document.getElementById("calendarGrid");
+
+            document.getElementById("monthLabel").textContent =
+                `${monthNames[shownMonth]} ${shownYear}`;
+
+            grid.innerHTML = "";
+
+            const weekdays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+
+            weekdays.forEach((day) => {
+                const element = document.createElement("span");
+                element.className = "weekday";
+                element.textContent = day;
+                grid.appendChild(element);
+            });
+
+            const firstDay = new Date(shownYear, shownMonth, 1).getDay();
+
+            const days = new Date(shownYear, shownMonth + 1, 0).getDate();
+
+            const previousMonthDays = new Date(shownYear, shownMonth, 0).getDate();
+
+            for (let i = 0; i < 42; i++) {
+                const element = document.createElement("span");
+                element.className = "calendar-day";
+
+                let dayNumber;
+
+                if (i < firstDay) {
+                    dayNumber = previousMonthDays - firstDay + i + 1;
+                    element.classList.add("outside");
+                } else if (i >= firstDay + days) {
+                    dayNumber = i - firstDay - days + 1;
+                    element.classList.add("outside");
+                } else {
+                    dayNumber = i - firstDay + 1;
+
+                    if (
+                        shownMonth === 9 &&
+                        shownYear === 2026 && [5, 15, 18, 26].includes(dayNumber)
+                    ) {
+                        element.classList.add("has-event");
+                    }
+                }
+
+                element.textContent = dayNumber;
+                grid.appendChild(element);
+            }
+        }
+
+        function changeMonth(delta) {
+            shownMonth += delta;
+
+            if (shownMonth < 0) {
+                shownMonth = 11;
+                shownYear--;
+            }
+
+            if (shownMonth > 11) {
+                shownMonth = 0;
+                shownYear++;
+            }
+
+            renderCalendar();
+        }
+
+        function showNotice(name) {
+            const toast = document.getElementById("toast");
+
+            toast.textContent = `Resumo de ${name}: consulte as pendências na área de equipe.`;
+
+            toast.classList.add("visible");
+
+            window.clearTimeout(window.__toastTimer);
+
+            window.__toastTimer = window.setTimeout(() => {
+                toast.classList.remove("visible");
+            }, 3200);
+        }
+
+        renderCalendar();
+    </script>
+</body>
+
+</html>

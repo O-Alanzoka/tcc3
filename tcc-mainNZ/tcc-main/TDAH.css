@@ -1,0 +1,412 @@
+
+/* =====================================================
+   RESET E CONFIGURAÇÕES GERAIS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3f7f5;
+    color: #09251e;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+:root {
+    --verde-escuro: #071b15;
+    --verde: #078a67;
+    --verde-vivo: #14b886;
+    --verde-claro: #e3f4ef;
+    --fundo: #f3f7f5;
+    --branco: #ffffff;
+    --texto: #09251e;
+    --texto-cinza: #71807c;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* =====================================================
+   CABEÇALHO — MESMO PADRÃO DAS OUTRAS PÁGINAS
+===================================================== */
+
+.header {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-height: 72px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    background-color: var(--branco);
+    border-bottom: 1px solid #e7ecea;
+}
+
+.header > a:first-child {
+    flex-shrink: 0;
+    color: #56645f;
+    font-size: 14px;
+    transition: color 0.25s ease;
+}
+
+.header > a:first-child:hover {
+    color: var(--verde);
+}
+
+.logo-area {
+    margin-right: auto;
+    flex-shrink: 0;
+}
+
+.logo-area h2 {
+    color: #286e5c;
+    font-size: 21px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.logo-area p {
+    display: none;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu a {
+    color: #35443e;
+    font-size: 13px;
+    transition: color 0.25s ease;
+}
+
+.menu a:hover {
+    color: var(--verde);
+}
+
+.btn-login {
+    flex-shrink: 0;
+    padding: 11px 25px;
+    border-radius: 30px;
+    background-color: #253c20;
+    color: var(--branco);
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.btn-login:hover {
+    background-color: var(--verde);
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   HERO — FUNDO ESCURO E DUAS COLUNAS
+===================================================== */
+
+.sol {
+    position: relative;
+    width: 100%;
+    min-height: 390px;
+    padding: 65px 6%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 55px;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 78% 45%,
+            rgba(14, 107, 77, 0.22),
+            transparent 42%
+        ),
+        linear-gradient(115deg, #101512 0%, #06150f 100%);
+    color: var(--branco);
+}
+
+.sol-text {
+    position: relative;
+    z-index: 1;
+    max-width: 610px;
+}
+
+.sol-text::before {
+    content: "SOLUÇÕES PARA SUA EQUIPE";
+    display: block;
+    margin-bottom: 14px;
+    color: #55d4ae;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+}
+
+.sol-text h1 {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: clamp(32px, 3.2vw, 48px);
+    font-weight: 750;
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+}
+
+.sol-text h1 span {
+    color: var(--verde-vivo);
+}
+
+.sol-text p {
+    max-width: 470px;
+    color: #bac9c3;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.sol-img {
+    width: 100%;
+    min-width: 0;
+}
+
+.img-placeholder {
+    width: 100%;
+    min-height: 245px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    overflow: hidden;
+    border: 1px solid rgba(117, 194, 164, 0.08);
+    border-radius: 14px;
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(27, 112, 83, 0.45),
+            transparent 75%
+        ),
+        linear-gradient(135deg, #164637, #0a3025);
+    color: #a8c8be;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.img-placeholder:hover {
+    transform: translateY(-3px);
+}
+
+.img-placeholder span {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =====================================================
+   CONTEÚDO — SEÇÃO BRANCA
+===================================================== */
+
+.index-text {
+    width: 100%;
+    padding: 65px 6% 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: #ffffff;
+}
+
+/* Cada parágrafo vira um bloco organizado */
+
+.index-text > div {
+    width: 78%;
+    max-width: 1000px;
+    padding: 25px 30px;
+    border: 1px solid #e9efec;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.index-text > div:hover {
+    background-color: #f8fbf9;
+    border-color: #d5e9e0;
+    transform: translateY(-2px);
+}
+
+.index-text > div p {
+    color: #5f6e68;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* Alternância dos blocos */
+
+.index-text > .right {
+    align-self: flex-end;
+    border-left: 3px solid var(--verde);
+}
+
+.index-text > .left {
+    align-self: flex-start;
+    border-left: 3px solid #c9e5d9;
+}
+
+/* =====================================================
+   RESPONSIVIDADE — TABLETS
+===================================================== */
+
+@media (max-width: 900px) {
+    .header {
+        padding: 15px 4%;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .menu {
+        gap: 18px;
+    }
+
+    .sol {
+        min-height: auto;
+        padding: 55px 5%;
+        gap: 30px;
+    }
+
+    .sol-text h1 {
+        font-size: clamp(29px, 4vw, 38px);
+    }
+
+    .img-placeholder {
+        min-height: 220px;
+    }
+
+    .index-text {
+        padding: 55px 5% 70px;
+    }
+
+    .index-text > div {
+        width: 88%;
+    }
+}
+
+/* =====================================================
+   RESPONSIVIDADE — CELULARES
+===================================================== */
+
+@media (max-width: 600px) {
+    .header {
+        min-height: auto;
+        padding: 17px 5%;
+        gap: 15px;
+    }
+
+    .header > a:first-child {
+        font-size: 12px;
+    }
+
+    .logo-area h2 {
+        font-size: 18px;
+    }
+
+    .menu {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 8px;
+        border-top: 1px solid #edf1ef;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .btn-login {
+        padding: 9px 17px;
+        font-size: 12px;
+    }
+
+    .sol {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 48px 6%;
+    }
+
+    .sol-text h1 {
+        font-size: clamp(30px, 8vw, 40px);
+        letter-spacing: -1px;
+    }
+
+    .sol-text p {
+        font-size: 15px;
+    }
+
+    .img-placeholder {
+        min-height: 210px;
+        border-radius: 12px;
+    }
+
+    .index-text {
+        padding: 38px 6% 55px;
+        gap: 16px;
+    }
+
+    .index-text > div {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .index-text > div p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .index-text > .right,
+    .index-text > .left {
+        align-self: stretch;
+    }
+}
+
+/* =====================================================
+   TELAS MUITO PEQUENAS
+===================================================== */
+
+@media (max-width: 360px) {
+    .header {
+        gap: 10px;
+    }
+
+    .logo-area h2 {
+        font-size: 16px;
+    }
+
+    .menu a {
+        font-size: 11px;
+    }
+
+    .sol-text h1 {
+        font-size: 28px;
+    }
+
+    .img-placeholder {
+        min-height: 175px;
+    }
+}

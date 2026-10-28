@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bellievie | Meus eventos</title>
+    <link rel="stylesheet" href="eventos.css" />
+</head>
+
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="dashboarda.html">
+            <span class="brand-name">BELLIEVIE</span>
+            <span class="brand-role">REPRESENTANTE</span>
+        </a>
+
+        <nav class="navigation">
+            <a class="nav-item" href="dashboarda.html">
+                <span class="nav-icon">▦</span> Dashboard
+            </a>
+            <a class="nav-item active" href="eventos.html">
+                <span class="nav-icon">▤</span> Eventos
+            </a>
+            <a class="nav-item" href="relatorio.html">
+                <span class="nav-icon">▥</span> Relatórios
+            </a>
+            <a class="nav-item" href="calendario.html">
+                <span class="nav-icon">▦</span> calendario
+            </a>
+            <a class="nav-item" href="viagens.html">
+                <span class="nav-icon">✈</span> Viagens
+            </a>
+            <a class="nav-item" href="visitas.html">
+                <span class="nav-icon">◎</span> Visitas
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="avatar">R</div>
+            <div class="profile-copy">
+                <strong>Representante</strong>
+                <span>Usuário corporativo</span>
+            </div>
+            <span class="online-dot"></span>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <div class="breadcrumb">Painel / Eventos</div>
+                <h1>Meus eventos</h1>
+                <p class="subtitle">
+                    Acompanhe seus eventos e consulte as decisões do gerente.
+                </p>
+            </div>
+
+            <a class="logout" href="/sair">Sair ↗</a>
+        </header>
+
+        <section class="welcome-panel">
+            <div>
+                <span class="eyebrow">ÁREA DO REPRESENTANTE</span>
+                <h2>Olá! Confira seus eventos.</h2>
+                <p>
+                    Consulte as datas, os locais e a situação de cada solicitação. Somente eventos vinculados à sua conta devem aparecer aqui.
+                </p>
+            </div>
+            <div class="welcome-icon">▤</div>
+        </section>
+
+        <section class="summary-grid">
+            <article class="summary-card">
+                <div class="summary-top">
+                    <span>Total de eventos</span>
+                    <span class="summary-icon">▤</span>
+                </div>
+                <strong id="totalEventos">—</strong>
+                <small>Seus registros</small>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-top">
+                    <span>Em análise</span>
+                    <span class="summary-icon amber">◷</span>
+                </div>
+                <strong id="totalPendentes">—</strong>
+                <small>Aguardando decisão</small>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-top">
+                    <span>Aprovados</span>
+                    <span class="summary-icon green">✓</span>
+                </div>
+                <strong id="totalAprovados">—</strong>
+                <small>Solicitações aprovadas</small>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-top">
+                    <span>Reprovados</span>
+                    <span class="summary-icon red">×</span>
+                </div>
+                <strong id="totalReprovados">—</strong>
+                <small>Solicitações não aprovadas</small>
+            </article>
+        </section>
+
+        <section class="events-panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Histórico de eventos</h2>
+                    <p>Consulte o status atualizado das suas solicitações.</p>
+                </div>
+                <button class="refresh-button" id="btnAtualizar" type="button">
+            ↻ Atualizar
+          </button>
+            </div>
+
+            <div class="filters">
+                <label class="search-field">
+            <span>⌕</span>
+            <input
+              id="buscaEvento"
+              type="search"
+              placeholder="Buscar evento ou local..."
+            />
+          </label>
+
+                <label>
+            <span class="filter-label">Situação</span>
+            <select id="filtroStatus">
+              <option value="">Todas as situações</option>
+              <option value="pendente">Em análise</option>
+              <option value="aprovado">Aprovados</option>
+              <option value="reprovado">Reprovados</option>
+            </select>
+          </label>
+
+                <label>
+            <span class="filter-label">A partir de</span>
+            <input id="dataInicial" type="date" />
+          </label>
+
+                <label>
+            <span class="filter-label">Até</span>
+            <input id="dataFinal" type="date" />
+          </label>
+            </div>
+
+            <div id="mensagem" class="message" role="status">
+                Carregando seus eventos...
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evento</th>
+                            <th>Data</th>
+                            <th>Local</th>
+                            <th>Situação</th>
+                            <th>Detalhes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaEventos">
+                        <tr>
+                            <td colspan="5" class="empty">Carregando registros...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-footer">
+                <span id="contadorResultados">0 eventos encontrados</span>
+                <span>Bellievie · Área do representante</span>
+            </div>
+        </section>
+
+        <footer class="page-footer">Bellievie © 2026 · Gestão de eventos</footer>
+    </main>
+
+    <dialog id="modalEvento">
+        <div class="modal-heading">
+            <div>
+                <span class="eyebrow">DETALHES</span>
+                <h2 id="modalTitulo">Evento</h2>
+            </div>
+            <button id="fecharModal" class="close-button" type="button" aria-label="Fechar">
+          ×
+        </button>
+        </div>
+
+        <div id="modalConteudo" class="modal-content"></div>
+        <button id="fecharModalRodape" class="refresh-button" type="button">
+        Fechar
+      </button>
+    </dialog>
+
+    <script>
+        const listaEventos = document.getElementById("listaEventos");
+        const mensagem = document.getElementById("mensagem");
+        const modal = document.getElementById("modalEvento");
+
+        let eventos = [];
+
+        function escapar(valor) {
+            return String(valor ?? "").replace(
+                /[&<>"']/g,
+                (caractere) =>
+                ({
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;",
+                })[caractere],
+            );
+        }
+
+        function normalizarStatus(status) {
+            const valor = String(status ?? "")
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+                .trim();
+
+            if (["aprovado", "aprovada", "approved"].includes(valor)) {
+                return "aprovado";
+            }
+
+            if (
+                ["reprovado", "reprovada", "recusado", "recusada"].includes(valor)
+            ) {
+                return "reprovado";
+            }
+
+            return "pendente";
+        }
+
+        function textoStatus(status) {
+            if (status === "aprovado") return "Aprovado";
+            if (status === "reprovado") return "Reprovado";
+            return "Em análise";
+        }
+
+        function formatarData(data) {
+            if (!data) return "Não informada";
+
+            const partes = String(data).slice(0, 10).split("-");
+            if (partes.length !== 3) return escapar(data);
+
+            return `${partes[2]}/${partes[1]}/${partes[0]}`;
+        }
+
+        function obterNome(evento) {
+            return (
+                evento.titulo ||
+                evento.nome ||
+                evento.nome_evento ||
+                evento.evento ||
+                "Evento sem título"
+            );
+        }
+
+        function obterData(evento) {
+            return (
+                evento.data_evento ||
+                evento.data ||
+                evento.data_inicio ||
+                evento.data_evento_inicio ||
+                ""
+            );
+        }
+
+        function obterLocal(evento) {
+            return (
+                evento.local ||
+                evento.endereco ||
+                evento.cidade ||
+                evento.local_evento ||
+                "Não informado"
+            );
+        }
+
+        function obterStatus(evento) {
+            return normalizarStatus(
+                evento.status_aprovacao || evento.status || evento.aprovacao,
+            );
+        }
+
+        function atualizarResumo(registros) {
+            document.getElementById("totalEventos").textContent = registros.length;
+
+            document.getElementById("totalPendentes").textContent =
+                registros.filter((e) => obterStatus(e) === "pendente").length;
+
+            document.getElementById("totalAprovados").textContent =
+                registros.filter((e) => obterStatus(e) === "aprovado").length;
+
+            document.getElementById("totalReprovados").textContent =
+                registros.filter((e) => obterStatus(e) === "reprovado").length;
+        }
+
+        function renderizarEventos() {
+            const busca = document
+                .getElementById("buscaEvento")
+                .value.trim()
+                .toLocaleLowerCase("pt-BR");
+
+            const statusSelecionado = document.getElementById("filtroStatus").value;
+
+            const inicial = document.getElementById("dataInicial").value;
+            const final = document.getElementById("dataFinal").value;
+
+            const filtrados = eventos.filter((evento) => {
+                const nome = obterNome(evento).toLocaleLowerCase("pt-BR");
+                const local = obterLocal(evento).toLocaleLowerCase("pt-BR");
+                const data = String(obterData(evento)).slice(0, 10);
+                const status = obterStatus(evento);
+
+                return (
+                    (!busca || nome.includes(busca) || local.includes(busca)) &&
+                    (!statusSelecionado || status === statusSelecionado) &&
+                    (!inicial || (data && data >= inicial)) &&
+                    (!final || (data && data <= final))
+                );
+            });
+
+            document.getElementById("contadorResultados").textContent =
+                `${filtrados.length} evento(s) encontrado(s)`;
+
+            if (!filtrados.length) {
+                listaEventos.innerHTML = `
+          <tr>
+              <td colspan="5" class="empty">
+                  Nenhum evento corresponde aos filtros.
+              </td>
+          </tr>`;
+                return;
+            }
+
+            listaEventos.innerHTML = filtrados
+                .map((evento, indice) => {
+                    const status = obterStatus(evento);
+
+                    return `
+          <tr>
+              <td>
+                  <div class="event-name">${escapar(obterNome(evento))}</div>
+                  <div class="event-id">Registro #${escapar(evento.id ?? "—")}</div>
+              </td>
+              <td>${escapar(formatarData(obterData(evento)))}</td>
+              <td>${escapar(obterLocal(evento))}</td>
+              <td>
+                  <span class="status-badge ${status}">
+                      <span class="status-dot"></span>
+                      ${textoStatus(status)}
+                  </span>
+              </td>
+              <td>
+                  <button class="details-button"
+                      type="button" data-indice="${indice}"
+                      data-id="${escapar(evento.id ?? "")}">
+                      Ver detalhes
+                  </button>
+              </td>
+          </tr>`;
+                })
+                .join("");
+
+            listaEventos.querySelectorAll(".details-button").forEach((botao) => {
+                botao.addEventListener("click", () => {
+                    const id = botao.dataset.id;
+                    const evento = filtrados.find((e) => String(e.id ?? "") === id);
+
+                    if (evento) mostrarDetalhes(evento);
+                });
+            });
+        }
+
+        function mostrarDetalhes(evento) {
+            const status = obterStatus(evento);
+
+            document.getElementById("modalTitulo").textContent = obterNome(evento);
+
+            document.getElementById("modalConteudo").innerHTML = `
+      <div class="detail-row">
+          <span>Data</span>
+          <strong>${escapar(formatarData(obterData(evento)))}</strong>
+      </div>
+      <div class="detail-row">
+          <span>Local</span>
+          <strong>${escapar(obterLocal(evento))}</strong>
+      </div>
+      <div class="detail-row">
+          <span>Situação</span>
+          <strong><span class="status-badge ${status}">
+              ${textoStatus(status)}
+          </span></strong>
+      </div>
+      <div class="detail-row">
+          <span>Descrição</span>
+          <strong>${escapar(evento.descricao || evento.observacoes || "Nenhuma descrição disponível.")}</strong>
+      </div>
+      <div class="detail-row">
+          <span>Motivo da decisão</span>
+          <strong>${escapar(evento.justificativa || evento.motivo_reprovacao || "Não informado.")}</strong>
+      </div>`;
+
+            modal.showModal();
+        }
+
+        async function carregarEventos() {
+            mensagem.textContent = "Carregando seus eventos...";
+            mensagem.className = "message";
+            listaEventos.innerHTML = `
+      <tr><td colspan="5" class="empty">Carregando...</td></tr>`;
+
+            try {
+                const resposta = await fetch("/api/eventos", {
+                    method: "GET",
+                    credentials: "same-origin",
+                    headers: {
+                        Accept: "application/json",
+                    },
+                });
+
+                if (resposta.status === 401 || resposta.status === 403) {
+                    throw new Error(
+                        "Sua sessão expirou ou você não tem permissão. Entre novamente no sistema.",
+                    );
+                }
+
+                if (!resposta.ok) {
+                    throw new Error(
+                        "Não foi possível consultar os eventos. Verifique a API do sistema.",
+                    );
+                }
+
+                const dados = await resposta.json();
+
+                if (!Array.isArray(dados)) {
+                    throw new Error("A API de eventos não retornou uma lista válida.");
+                }
+
+                eventos = dados;
+                atualizarResumo(eventos);
+                renderizarEventos();
+
+                mensagem.textContent = eventos.length ?
+                    "Eventos carregados com sucesso." :
+                    "Você ainda não possui eventos cadastrados.";
+
+                mensagem.className = eventos.length ? "message success" : "message";
+            } catch (erro) {
+                eventos = [];
+                atualizarResumo(eventos);
+                renderizarEventos();
+                mensagem.textContent = erro.message;
+                mensagem.className = "message error";
+            }
+        }
+
+        document
+            .getElementById("btnAtualizar")
+            .addEventListener("click", carregarEventos);
+
+        ["buscaEvento", "filtroStatus", "dataInicial", "dataFinal"].forEach(
+            (id) => {
+                document
+                    .getElementById(id)
+                    .addEventListener("input", renderizarEventos);
+                document
+                    .getElementById(id)
+                    .addEventListener("change", renderizarEventos);
+            },
+        );
+
+        document
+            .getElementById("fecharModal")
+            .addEventListener("click", () => modal.close());
+
+        document
+            .getElementById("fecharModalRodape")
+            .addEventListener("click", () => modal.close());
+
+        carregarEventos();
+    </script>
+</body>
+
+</html>

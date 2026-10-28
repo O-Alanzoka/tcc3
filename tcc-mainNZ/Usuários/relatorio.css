@@ -1,0 +1,342 @@
+:root {
+    --dark: #071a12;
+    --green: #0f7c58;
+    --green-text: #0b7a52;
+    --mint: #e5f4ec;
+    --mint-2: #dff1e7;
+    --bg: #f1f6f3;
+    --slot: #f1f5f2;
+    --ink: #0e231a;
+    --muted: #6b7a73;
+    --white: #fff;
+    --orange: #e88a33
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+
+body {
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    color: var(--ink);
+    background: var(--dark)
+}
+
+
+/* a tela toda: 1365 x 945 (e se adapta a qualquer tamanho sem sobrar espaço) */
+
+.app {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    min-width: 1100px;
+    min-height: 760px
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 229px;
+    flex: none;
+    background: var(--dark);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 20px 30px
+}
+
+.brand {
+    padding: 0 12px;
+    margin-bottom: 34px
+}
+
+.brand strong {
+    display: block;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: .4px
+}
+
+.brand span {
+    display: block;
+    font-size: 9.5px;
+    margin-top: 3px;
+    font-weight: 500
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    height: 42px;
+    padding: 0 15px;
+    border-radius: 10px;
+    color: #dfe9e4;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background .15s
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, .06)
+}
+
+.menu a.active {
+    background: var(--green);
+    color: #fff;
+    height: 46px
+}
+
+.menu a.gap {
+    margin-top: 8px
+}
+
+.menu svg {
+    width: 15px;
+    height: 15px;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.1
+}
+
+.menu svg.fill {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    stroke: none;
+    margin-left: -2px
+}
+
+.menu hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+    margin: 14px 4px 0
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 4px
+}
+
+.photo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex: none
+}
+
+.photo svg {
+    width: 100%;
+    height: 100%;
+    display: block
+}
+
+.profile b {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600
+}
+
+.profile small {
+    display: block;
+    font-size: 10px;
+    color: #aebcb5;
+    margin-top: 3px
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+label.upload:focus-within {
+    outline: 2px solid var(--green);
+    outline-offset: 2px
+}
+
+
+/* MAIN: preenche a altura */
+
+.main {
+    flex: 1;
+    min-width: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px 40px 32px
+}
+
+.title {
+    height: 104px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    padding-top: 6px
+}
+
+.title h1 {
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: -.2px
+}
+
+.content {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column
+}
+
+
+/* CAMPOS */
+
+.f {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0
+}
+
+.f.grow {
+    flex: 1;
+    min-height: 0
+}
+
+.f label,
+.f .lb {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #55655d;
+    letter-spacing: .4px;
+    text-transform: uppercase
+}
+
+.f input,
+.f select,
+.f textarea,
+.upload {
+    width: 100%;
+    border: 0;
+    border-radius: 11px;
+    background: var(--white);
+    color: var(--ink);
+    font: 400 13px 'IBM Plex Sans', system-ui, sans-serif;
+    padding: 0 14px;
+    height: 42px
+}
+
+.f textarea {
+    padding: 14px;
+    resize: none;
+    line-height: 1.45;
+    flex: 1;
+    min-height: 0
+}
+
+.f input::placeholder,
+.f textarea::placeholder {
+    color: #8a9892
+}
+
+.upload {
+    display: flex;
+    align-items: center;
+    color: #8a9892;
+    cursor: pointer
+}
+
+.upload:hover {
+    background: #f7fbf9
+}
+
+.btn {
+    height: 48px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--green);
+    color: #fff;
+    font: 600 14px 'IBM Plex Sans', system-ui, sans-serif;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    padding: 0 34px
+}
+
+.btn:hover {
+    background: #0c6a4b
+}
+
+.btn:active {
+    transform: scale(.98)
+}
+
+.btn.light {
+    background: var(--slot);
+    color: var(--green-text)
+}
+
+.btn.light:hover {
+    background: #d3ebdf
+}
+
+
+/* ===== RELATÓRIO ===== */
+
+.content h2 {
+    font-size: 19px;
+    font-weight: 600
+}
+
+.form {
+    gap: 14px
+}
+
+.row {
+    display: grid;
+    gap: 20px
+}
+
+.a {
+    grid-template-columns: 3fr 1fr
+}
+
+.b {
+    grid-template-columns: 1fr 1fr
+}
+
+.c {
+    grid-template-columns: 1fr 2fr
+}
+
+.actions {
+    flex: none;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px
+}
+
+.actions .btn {
+    width: 350px;
+    height: 54px
+}

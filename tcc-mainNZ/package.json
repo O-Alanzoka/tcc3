@@ -1,0 +1,21 @@
+{
+    "name": "tcc-mainnz",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node --use-system-ca server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "dependencies": {
+        "better-sqlite3": "^13.0.3",
+        "dotenv": "^18.0.1",
+        "express": "^5.2.1",
+        "express-session": "^1.19.0",
+        "nodemailer": "^10.0.10"
+    }
+}

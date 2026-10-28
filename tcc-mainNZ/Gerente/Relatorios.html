@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Relatórios - Bellievie Gerente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="relatorios.css">
+
+</head>
+
+<body>
+    <aside class="side">
+        <div class="brand"><b>BELLIEVIE</b><small>GERENTE</small></div>
+        <nav>
+            <div class="item"><span class="icon">▦</span><a href="Dashboard.html">Dashboard</a></div>
+            <div class="item"><span class="icon">▤</span><a href="eventosG2.html">Eventos</a></div>
+            <div class="item"><span class="icon plane">✈</span><a href="viagensG.html">Viagens</a></div>
+            <div class="item"><span class="icon">R$</span><a href="Gastos.html">Gastos</a></div>
+            <div class="item"><span class="icon">◉</span><a href="visitasG.html">Visitas</a></div>
+            <div class="item active"><span class="icon">▥</span><a href="Relatorios.html">Relatórios</a></div>
+            <div class="item"><span class="icon">♟</span><a href="equipeG.html">Equipe</a></div>
+                    </nav>
+        <div class="user">
+            <div class="avatar">G</div>
+            <div><b>Gerente</b><span>Usuário corporativo</span></div>
+        </div>
+    </aside>
+
+    <main>
+        <h1>Relatórios</h1>
+        <div class="list" id="list"></div>
+    </main>
+
+    <script>
+        var R = [
+            [1, "Beauty Fair Tech", "15/10/26", "R$ 1200", 8, "12 contatos novos e 3 propostas enviadas ao final do evento.", "Estande montado no primeiro dia, abordagem direta a compradores e envio de propostas no mesmo dia.", 1],
+            [8, "FCE Cosmetique", "20/10/26", "R$ 1540", 11, "Duas negociações abertas, retorno previsto para a próxima semana.", "Apresentação da linha para o grupo de compras, com demonstração de produtos e coleta de pedidos.", 2],
+            [9, "Beauty Show", "22/10/26", "R$ 980", 6, "5 leads qualificados e 2 reuniões agendadas.", "Demonstração de produtos no estande e coleta de contatos de profissionais da área.", 3],
+            [2, "Workshop Técnico", "25/10/26", "R$ 650", 9, "Workshop concluído com boa participação da equipe técnica.", "Apresentação técnica dos produtos e sessão de perguntas com os participantes.", 4],
+            [3, "Encontro Regional", "28/10/26", "R$ 720", 7, "3 novos distribuidores interessados na região.", "Reuniões individuais com distribuidores e apresentação do catálogo atualizado.", 5],
+            [4, "Fórum de Negócios", "30/10/26", "R$ 1100", 10, "Contatos estratégicos com redes de varejo.", "Participação em painéis, networking e troca de contatos com representantes de redes.", 6],
+            [5, "Congresso Comercial", "03/11/26", "R$ 1890", 14, "14 contatos realizados e 4 propostas em andamento.", "Palestra de abertura, estande ativo durante os dois dias e follow-up com interessados.", 7],
+            [6, "Rodada de Negócios", "05/11/26", "R$ 560", 5, "Rodada produtiva com 5 reuniões rápidas.", "Reuniões de 20 minutos com compradores e envio de material comercial ao final.", 8],
+            [7, "Lançamento Linha Verão", "08/11/26", "R$ 1320", 12, "Lançamento bem recebido, 12 pedidos iniciais.", "Evento de apresentação da nova linha com degustação de produtos e pré-venda.", 9],
+            [10, "Expo Estética", "12/11/26", "R$ 2100", 18, "Maior evento do trimestre, 18 contatos e 6 propostas.", "Estande amplo, demonstrações ao vivo e agenda de reuniões com compradores.", 10],
+            [11, "Visita à Fábrica", "15/11/26", "R$ 430", 4, "Visita técnica com alinhamento de prazos de produção.", "Acompanhamento da linha de produção e reunião com a equipe de qualidade.", 11]
+        ];
+        var T = [
+            ["Beauty Fair Tech", "FCE Cosmetique", "Beauty Show", "Workshop Técnico", "Encontro Regional", "Fórum de Negócios", "Congresso Comercial", "Rodada de Negócios", "Lançamento Linha Verão", "Expo Estética", "Visita à Fábrica"]
+        ];
+
+        function f(l, v) {
+            return '<div class="f"><label>' + l + '</label><span>' + v + '</span></div>'
+        }
+        document.getElementById('list').innerHTML = R.map(function(r) {
+            return '<div class="rep"><button class="bar" type="button" aria-expanded="false">' +
+                '<span class="ic"><svg viewBox="0 0 16 16" fill="none" stroke="#0a5a43" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>' +
+                '<span class="t">Fulano ' + r[0] + ' — ' + r[1] + '</span><span class="btn">↓</span></button>' +
+                '<div class="body"><div class="grid">' +
+                f('Nome do evento', 'Resultado ' + r[1]) + f('Data', r[2]) + f('Funcionário', 'Fulano ' + r[0]) +
+                f('Evento relacionado', r[1]) + f('Gastos do evento', r[3]) + f('Contatos realizados', r[4]) +
+                '</div><div class="full">' + f('Resumo', r[5]) + '</div><div class="full">' + f('Ação / resultado detalhado', r[6]) + '</div>' +
+                '<div class="grid full">' + f('Foto / comprovante', r[7] + ' foto(s)') + f('Anexos', 'relatorio-' + r[7] + '.pdf') + '</div></div></div>';
+        }).join('');
+        document.getElementById('list').addEventListener('click', function(e) {
+            var b = e.target.closest('.bar');
+            if (!b) return;
+            var rep = b.parentNode,
+                open = rep.classList.toggle('open');
+            b.setAttribute('aria-expanded', open);
+            b.querySelector('.btn').textContent = open ? '↑' : '↓';
+        });
+    </script>
+</body>
+
+</html>

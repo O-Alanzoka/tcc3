@@ -1,0 +1,828 @@
+
+/* =====================================================
+   CONFIGURAÇÕES GERAIS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f7f5;
+    color: #10251d;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+:root {
+    --verde-escuro: #09251c;
+    --verde: #078a67;
+    --verde-claro: #e3f4ef;
+    --branco: #ffffff;
+    --cinza: #71807c;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+.header {
+    min-height: 72px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    background: #ffffff;
+    border-bottom: 1px solid #e7ecea;
+}
+
+.voltar {
+    flex-shrink: 0;
+    color: #56645f;
+    font-size: 13px;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.logo h2 {
+    color: #286e5c;
+    font-size: 21px;
+    letter-spacing: -0.5px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu a {
+    position: relative;
+    padding: 8px 0;
+    color: #485650;
+    font-size: 13px;
+    transition: color 0.2s ease;
+}
+
+.menu a:hover,
+.menu a.ativo {
+    color: var(--verde);
+}
+
+.menu a.ativo::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--verde);
+    content: "";
+}
+
+.btn-login {
+    padding: 11px 24px;
+    border-radius: 30px;
+    background: #253c20;
+    color: white;
+    font-size: 13px;
+    transition: background 0.2s ease;
+}
+
+.btn-login:hover {
+    background: var(--verde);
+}
+
+/* =====================================================
+   APRESENTAÇÃO
+===================================================== */
+
+.hero {
+    min-height: 390px;
+    padding: 55px 6%;
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    align-items: center;
+    gap: 55px;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 80% 50%,
+            rgba(20, 184, 134, 0.18),
+            transparent 45%
+        ),
+        linear-gradient(115deg, #101512, #06150f);
+    color: white;
+}
+
+.hero-texto {
+    max-width: 600px;
+}
+
+.etiqueta,
+.subtitulo {
+    display: inline-block;
+    color: var(--verde);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.hero-texto .etiqueta {
+    margin-bottom: 16px;
+    color: #55d4ae;
+}
+
+.hero-texto h1 {
+    margin-bottom: 20px;
+    font-size: clamp(36px, 4vw, 53px);
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+}
+
+.hero-texto h1 span {
+    color: #38c997;
+}
+
+.hero-texto p {
+    max-width: 490px;
+    margin-bottom: 25px;
+    color: #bdcbc5;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.btn-principal {
+    display: inline-block;
+    padding: 13px 21px;
+    border: 1px solid #14b886;
+    border-radius: 7px;
+    background: #14b886;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background 0.2s ease;
+}
+
+.btn-principal:hover {
+    background: #0c9b70;
+}
+
+/* =====================================================
+   EMBALAGEM DA APRESENTAÇÃO
+===================================================== */
+
+.hero-visual {
+    position: relative;
+    min-height: 285px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(117, 194, 164, 0.15);
+    border-radius: 15px;
+    background:
+        radial-gradient(
+            circle at 50% 60%,
+            rgba(29, 125, 91, 0.45),
+            transparent 65%
+        ),
+        linear-gradient(145deg, #164637, #0a3025);
+}
+
+.selo {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    color: #a8cfc0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.frasco-hero {
+    z-index: 2;
+    transform: scale(1.1);
+}
+
+.texto-visual {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    color: #a8cfc0;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.decoracao {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    border: 1px solid rgba(194, 231, 212, 0.12);
+    border-radius: 50%;
+}
+
+.decoracao-1 {
+    top: 25px;
+    right: -50px;
+}
+
+.decoracao-2 {
+    bottom: -100px;
+    left: -40px;
+    width: 230px;
+    height: 230px;
+}
+
+/* =====================================================
+   EMBALAGEM GENÉRICA
+===================================================== */
+
+.frasco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tampa {
+    width: 38px;
+    height: 26px;
+    border-radius: 5px 5px 2px 2px;
+    background: linear-gradient(90deg, #d6c6a5, #f2e8d1, #c3b28f);
+}
+
+.frasco-corpo {
+    width: 112px;
+    height: 155px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px 12px 22px 22px;
+    background: linear-gradient(100deg, #e5eee5, #ffffff 45%, #d9e7dc);
+    color: #205a45;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
+}
+
+.marca {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.linha-frascos {
+    width: 40px;
+    height: 1px;
+    margin: 8px 0;
+    background: #7da891;
+}
+
+.nome-frascos {
+    font-family: Georgia, serif;
+    font-size: 17px;
+}
+
+.volume {
+    margin-top: 8px;
+    font-size: 6px;
+    letter-spacing: 1px;
+}
+
+/* =====================================================
+   SEÇÃO DE PRODUTOS
+===================================================== */
+
+.produtos {
+    padding: 75px 6% 65px;
+    background: #f3f7f5;
+}
+
+.titulo-secao {
+    margin-bottom: 35px;
+}
+
+.titulo-secao .subtitulo {
+    margin-bottom: 9px;
+}
+
+.titulo-secao h2 {
+    margin-bottom: 10px;
+    font-size: clamp(29px, 3vw, 37px);
+    letter-spacing: -1px;
+}
+
+.titulo-secao p {
+    color: var(--cinza);
+    font-size: 14px;
+}
+
+.grade-produtos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 25px;
+}
+
+/* =====================================================
+   CARTÕES
+===================================================== */
+
+.produto-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #e1eae5;
+    border-radius: 13px;
+    background: white;
+    box-shadow: 0 5px 18px rgba(7, 37, 27, 0.035);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 32px rgba(7, 37, 27, 0.09);
+}
+
+.produto-imagem {
+    position: relative;
+    min-height: 245px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.produto-imagem::before {
+    position: absolute;
+    top: -50px;
+    right: -35px;
+    width: 170px;
+    height: 170px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    content: "";
+}
+
+.produto-imagem::after {
+    position: absolute;
+    bottom: -100px;
+    left: -30px;
+    width: 210px;
+    height: 210px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    content: "";
+}
+
+.imagem-hidratante {
+    background: linear-gradient(145deg, #dcece2, #b7d5c2);
+}
+
+.imagem-serum {
+    background: linear-gradient(145deg, #dbe9e3, #a9c9b9);
+}
+
+.imagem-creme {
+    background: linear-gradient(145deg, #e9e4d7, #d5cbb3);
+}
+
+.numero {
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    z-index: 3;
+    color: #436c58;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.tag-produto {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 3;
+    padding: 6px 9px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #345b47;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+}
+
+/* =====================================================
+   DAILY BALANCE — HIDRATANTE
+===================================================== */
+
+.embalagem {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: drop-shadow(0 14px 14px rgba(27, 62, 44, 0.17));
+}
+
+.hidratante .tampa-produto {
+    width: 64px;
+    height: 18px;
+    border: 1px solid #e3e5da;
+    border-radius: 4px 4px 2px 2px;
+    background: linear-gradient(90deg, #e1e1d4, #ffffff, #d4d8ca);
+}
+
+.hidratante .rotulo {
+    width: 105px;
+    height: 135px;
+    padding: 16px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e0e8df;
+    border-radius: 9px 9px 17px 17px;
+    background: linear-gradient(100deg, #e7eee4, #ffffff 48%, #dce7da);
+    color: #245943;
+}
+
+/* =====================================================
+   GLOW SERUM — SÉRUM
+===================================================== */
+
+.serum {
+    align-items: center;
+}
+
+.conta-gotas {
+    width: 25px;
+    height: 34px;
+    margin-bottom: -2px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px 5px 2px 2px;
+    background: linear-gradient(90deg, #d9d5c2, #fff8e6, #c5bea7);
+}
+
+.conta-gotas span {
+    width: 9px;
+    height: 10px;
+    border-radius: 0 0 4px 4px;
+    background: #d5c8a8;
+}
+
+.corpo-serum {
+    width: 93px;
+    height: 130px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 10px 10px 17px 17px;
+    background: linear-gradient(100deg, #e0e9d8, #f9f8ec 48%, #d5e1cf);
+}
+
+.rotulo-serum {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #476c49;
+}
+
+/* =====================================================
+   SOFT CARE — CREME
+===================================================== */
+
+.creme {
+    align-items: center;
+}
+
+.tampa-creme {
+    width: 104px;
+    height: 16px;
+    border: 1px solid #d7cdb8;
+    border-radius: 5px 5px 2px 2px;
+    background: linear-gradient(90deg, #d4c7aa, #f8f0de, #c8b99b);
+}
+
+.corpo-creme {
+    width: 112px;
+    height: 120px;
+    padding: 12px 8px;
+    border: 1px solid #e5ddce;
+    border-radius: 5px 5px 18px 18px;
+    background: linear-gradient(100deg, #f2ebdd, #fffaf0 48%, #e4d9c3);
+}
+
+.rotulo-creme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #756443;
+}
+
+/* =====================================================
+   TEXTOS DOS PRODUTOS
+===================================================== */
+
+.marca-produto {
+    margin-bottom: 14px;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.nome-produto {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+.descricao-rotulo {
+    margin-top: 5px;
+    font-size: 6px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.detalhe-rotulo {
+    width: 25px;
+    height: 1px;
+    margin-top: 9px;
+    background: currentColor;
+    opacity: 0.6;
+}
+
+.volume-rotulo {
+    margin-top: 7px;
+    font-size: 7px;
+}
+
+.produto-info {
+    flex: 1;
+    padding: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.categoria {
+    margin-bottom: 8px;
+    color: var(--verde);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.produto-info h3 {
+    margin-bottom: 12px;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.produto-info > p {
+    margin-bottom: 23px;
+    color: #697871;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.produto-rodape {
+    width: 100%;
+    margin-top: auto;
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1px solid #edf1ee;
+    color: #547266;
+    font-size: 11px;
+}
+
+.simbolo {
+    color: #8aa997;
+    font-weight: 700;
+}
+
+.observacao {
+    margin-top: 24px;
+    color: #87938d;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   CHAMADA FINAL
+===================================================== */
+
+.mensagem-final {
+    padding: 65px 6%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    text-align: center;
+}
+
+.mensagem-final .subtitulo {
+    margin-bottom: 13px;
+}
+
+.mensagem-final h2 {
+    margin-bottom: 12px;
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.mensagem-final h2 span {
+    color: var(--verde);
+}
+
+.mensagem-final p {
+    max-width: 500px;
+    color: var(--cinza);
+    font-size: 14px;
+}
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
+
+.footer {
+    padding: 30px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: #071b15;
+    color: #a6bbb0;
+}
+
+.footer-logo {
+    color: #42c99b;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.footer p {
+    font-size: 12px;
+}
+
+.footer > span {
+    width: 100%;
+    padding-top: 15px;
+    border-top: 1px solid #19372b;
+    color: #82988c;
+    font-size: 10px;
+}
+
+/* =====================================================
+   TABLETS
+===================================================== */
+
+@media (max-width: 900px) {
+    .header {
+        gap: 20px;
+    }
+
+    .menu {
+        gap: 17px;
+    }
+
+    .hero {
+        gap: 30px;
+    }
+
+    .grade-produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =====================================================
+   CELULARES
+===================================================== */
+
+@media (max-width: 650px) {
+    .header {
+        padding: 16px 5%;
+        gap: 13px;
+        flex-wrap: wrap;
+    }
+
+    .voltar {
+        font-size: 12px;
+    }
+
+    .logo h2 {
+        font-size: 18px;
+    }
+
+    .menu {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+        padding-top: 10px;
+        border-top: 1px solid #edf1ef;
+    }
+
+    .menu a {
+        font-size: 11px;
+    }
+
+    .btn-login {
+        padding: 9px 16px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 48px 6%;
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .hero-texto h1 {
+        font-size: clamp(33px, 8vw, 42px);
+    }
+
+    .hero-texto p {
+        font-size: 14px;
+    }
+
+    .hero-visual {
+        min-height: 250px;
+    }
+
+    .produtos {
+        padding: 52px 6%;
+    }
+
+    .titulo-secao h2 {
+        font-size: 30px;
+    }
+
+    .grade-produtos {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .produto-imagem {
+        min-height: 250px;
+    }
+
+    .produto-info {
+        padding: 22px;
+    }
+
+    .produto-info > p {
+        font-size: 14px;
+    }
+
+    .mensagem-final {
+        padding: 52px 6%;
+    }
+
+    .footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .footer > span {
+        line-height: 1.7;
+    }
+}
+
+/* =====================================================
+   ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto;
+        transition: none;
+    }
+}

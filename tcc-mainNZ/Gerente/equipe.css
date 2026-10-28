@@ -1,0 +1,477 @@
+/* ==============================
+   CONFIGURAÇÃO GERAL
+   Referência: 1365 x 945 px
+   ============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --sidebar-color: #061b14;
+    --sidebar-active: #07825f;
+    --background: #f3f5f4;
+    --card-background: #ffffff;
+    --border-color: #dfe5e2;
+    --text-color: #26352f;
+    --muted-color: #899993;
+    --avatar-background: #e7f3ed;
+    --avatar-color: #087653;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+    background: var(--background);
+}
+
+body {
+    min-height: 100vh;
+}
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #dfe4e1;
+    border-radius: 11px;
+    background: var(--background);
+}
+
+/* ==============================
+   CONTEÚDO PRINCIPAL
+   ============================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 28px 44px 40px 66px;
+    background: var(--background);
+}
+
+.page-header {
+    min-height: 120px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: -1px;
+    font-weight: 700;
+    color: #23312b;
+}
+
+.total-representatives {
+    position: absolute;
+    top: 72px;
+    right: 0;
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 700;
+    color: #27352f;
+    white-space: nowrap;
+}
+
+/* ==============================
+   CARTÕES DAS REGIÕES
+   ============================== */
+
+.team-regions {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+
+.region-card {
+    width: 100%;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 11px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.region-card h2 {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    margin-bottom: 15px;
+    color: #26352f;
+}
+
+/* Lista de representantes */
+
+.representatives {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px 12px;
+}
+
+.representative {
+    height: 58px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px;
+    border: 1px solid #dfe5e2;
+    border-radius: 22px;
+    background: #ffffff;
+    color: #293832;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.representative-avatar {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--avatar-background);
+    color: var(--avatar-color);
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.representative-avatar.initials-ma {
+    font-size: 13px;
+}
+
+.representative-avatar.initials-fg {
+    font-size: 13px;
+}
+
+/* Larguras individuais conforme a referência */
+
+.south .representative:nth-child(1) {
+    width: 181px;
+}
+
+.south .representative:nth-child(2) {
+    width: 194px;
+}
+
+.south .representative:nth-child(3) {
+    width: 192px;
+}
+
+.south .representative:nth-child(4) {
+    width: 203px;
+}
+
+.south .representative:nth-child(5) {
+    width: 180px;
+}
+
+.southeast .representative:nth-child(1) {
+    width: 171px;
+}
+
+.southeast .representative:nth-child(2) {
+    width: 202px;
+}
+
+.southeast .representative:nth-child(3) {
+    width: 195px;
+}
+
+.southeast .representative:nth-child(4) {
+    width: 190px;
+}
+
+.southeast .representative:nth-child(5) {
+    width: 199px;
+}
+
+.southeast .representative:nth-child(6) {
+    width: 194px;
+}
+
+.northeast .representative:nth-child(1) {
+    width: 191px;
+}
+
+.northeast .representative:nth-child(2) {
+    width: 201px;
+}
+
+.northeast .representative:nth-child(3) {
+    width: 189px;
+}
+
+.northeast .representative:nth-child(4) {
+    width: 189px;
+}
+
+/* ==============================
+   ALTURAS DOS CARTÕES
+   ============================== */
+
+.south {
+    min-height: 140px;
+}
+
+.southeast {
+    min-height: 209px;
+}
+
+.northeast {
+    min-height: 140px;
+}
+
+/* ==============================
+   RESPONSIVIDADE
+   ============================== */
+
+@media (max-width: 1100px) {
+    .main-content {
+            padding-left: 32px;
+            padding-right: 28px;
+        }
+
+    .representative {
+            font-size: 16px;
+        }
+
+    .representatives {
+            gap: 10px;
+        }
+}
+
+@media (max-width: 760px) {
+    .app {
+            overflow: visible;
+            border-radius: 0;
+        }
+
+    .main-content {
+            padding: 24px 16px;
+        }
+
+    .page-header {
+            min-height: 100px;
+        }
+
+    .page-header h1 {
+            font-size: 27px;
+        }
+
+    .total-representatives {
+            top: 48px;
+            font-size: 15px;
+        }
+
+    .region-card {
+            padding: 16px;
+        }
+
+    .region-card h2 {
+            font-size: 18px;
+        }
+
+    .representative {
+            max-width: 100%;
+            font-size: 15px;
+        }
+
+    .south,
+        .southeast,
+        .northeast {
+            min-height: 0;
+        }
+}
+
+@media (max-width: 420px) {
+    .main-content {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+    .representative {
+            width: 100% !important;
+        }
+}
+
+/* ========================================
+   BARRA LATERAL (padrão do Dashboard)
+   ======================================== */
+
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+    flex: 0 0 240px;
+    min-height: 100vh;
+    padding: 26px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    background: #0e1912;
+    color: #fff;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.sidebar .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 8px 28px;
+    margin: 0 0 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar .brand h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    line-height: normal;
+    color: #fff;
+}
+
+.sidebar .brand span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+    line-height: normal;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.sidebar .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: auto;
+    min-height: 42px;
+    margin: 0;
+    padding: 11px 12px;
+    border-radius: 9px;
+    color: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: normal;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar .nav-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+}
+
+.sidebar .nav-item.active {
+    background: #1f8f5f;
+    color: #fff;
+    font-weight: 600;
+}
+
+.sidebar .nav-icon {
+    width: 16px;
+    min-width: 16px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.sidebar .nav-icon.plane {
+    font-size: 16px;
+}
+
+.sidebar .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding: 18px 8px 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.sidebar .user-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #cfe2d9;
+    color: #009b6b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sidebar .user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar .user-info strong {
+    display: block;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.sidebar .user-info span {
+    display: block;
+    margin: 0;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 760px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        min-height: auto;
+        height: auto;
+        flex: 0 0 auto;
+        padding: 16px;
+    }
+    .sidebar .brand {
+        padding-bottom: 14px;
+        margin-bottom: 12px;
+    }
+    .sidebar .navigation {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .sidebar .user-profile {
+        margin-top: 16px;
+    }
+}
